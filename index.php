@@ -5,7 +5,7 @@
     if (isset($_POST['submit'])){
             $username = mysqli_real_escape_string($conn, $_POST['username']);
             $pass = md5($_POST['password']);
-            $select = " SELECT * FROM sinhvien WHERE username = '$username' && password = '$pass' ";
+            $select = " SELECT * FROM user WHERE username = '$username' && password = '$pass' ";
             $result = mysqli_query($conn, $select);
 
             if(mysqli_num_rows($result) > 0){
@@ -36,12 +36,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <!-- Link bootstrap icon ở trên -->
     <link rel="stylesheet" href="./source/css/main.css">
-    <title>johnbeo</title>
+    <title>VCS Web</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 fixed-top">
         <div class="container">
-            <a href="index.php" class="navbar-brand">DA WEB</a>
+            <a href="index.php" class="navbar-brand">VCS</a>
             <button 
             class="btn btn-primary btn-large" 
             type="button" 
@@ -60,10 +60,10 @@
                                 <img src="./source/img/frog.png" alt="">
                             </div>
                             <h6 class="card-title mb-3">
-                                <!-- Đây là một cái card giới thiệu -->
+                                Đây là một cái card giới thiệu
                             </h6>
                             <p class="card-text">
-                                <!-- Web demo week 6-7-8 của Mùa Hè Zui Zẻ -->
+                                Web demo 
                             </p>
                         </div>
                     </div>

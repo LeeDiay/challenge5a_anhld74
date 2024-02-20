@@ -16,7 +16,7 @@
                                 <img src="../source/img/two-frogs.png" alt="">
                             </div>
                             <h6 class="card-title mb-3">
-                                Welcome user!
+                                Welcome back,  <?php echo $_SESSION['username'] ?> !!
                             </h6>
                         </div>
                     </div>

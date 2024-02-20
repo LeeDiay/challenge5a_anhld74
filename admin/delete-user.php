@@ -6,7 +6,7 @@
     if (isset($_POST['submit'])){
         $username = mysqli_real_escape_string($conn, $_POST['username']);
         $_SESSION['delete_user'] = $username;
-        $select = "SELECT * FROM user_form WHERE username = '$username'";
+        $select = "SELECT * FROM user WHERE username = '$username'";
         $result = mysqli_query($conn, $select); 
         if(mysqli_num_rows($result) == 0){
             $error[] = 'This username doesn\'t exist!';
@@ -16,7 +16,7 @@
     } 
     if (isset($_POST['delete'])){
         $username = $_SESSION['delete_user'];
-        $query = "DELETE FROM user_form WHERE username='$username';";
+        $query = "DELETE FROM user WHERE username='$username';";
         mysqli_query($conn, $query);
         $success[] = 'Delete successfully!';
         unset($_SESSION['delete_user']);

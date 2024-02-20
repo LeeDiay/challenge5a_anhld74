@@ -6,7 +6,7 @@
     if (isset($_POST['submit'])){
         $username = mysqli_real_escape_string($conn, $_POST['username']);
         $_SESSION['update_user'] = $username;
-        $select = "SELECT * FROM user_form WHERE username = '$username'";
+        $select = "SELECT * FROM user WHERE username = '$username'";
         $result = mysqli_query($conn, $select); 
         if(mysqli_num_rows($result) == 0){
             $error[] = 'This username doesn\'t exist!';
@@ -19,7 +19,7 @@
         $nusername = mysqli_real_escape_string($conn, $_POST['nusername']);
         $nemail = mysqli_real_escape_string($conn, $_POST['nemail']);
         $npass = md5($_POST['npassword']);
-        $query = "UPDATE user_form SET username='$nusername', email='$nemail', password='$npass' WHERE username='$update_user'";
+        $query = "UPDATE user SET username='$nusername', email='$nemail', password='$npass' WHERE username='$update_user'";
         mysqli_query($conn, $query);
         unset($update_user);
         $success[] = 'Update successfully';

@@ -4,7 +4,7 @@
     @include '../logout.php';
     session_start();
     $username = $_SESSION['username'];
-    $select = "SELECT * FROM user_form WHERE username = '$username'";
+    $select = "SELECT * FROM user WHERE username = '$username'";
     $result = mysqli_query($conn, $select);
     $info = mysqli_fetch_all($result, MYSQLI_ASSOC);
 ?>

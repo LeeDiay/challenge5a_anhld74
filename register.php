@@ -32,11 +32,11 @@
         }else{
             if ($pass != $cpass){
                 $error[] = "Password doesn't match!";
-            }else{
+            } else {
                 $insert = "INSERT INTO user(username, password, email, type) VALUES ('$username','$pass', '$email','$type')";
                 mysqli_query($conn, $insert);
                 $success[] = "Successfully registered!";
-                //header('location: login.php');
+                // header('location: login.php');
             }
         }
      } 
