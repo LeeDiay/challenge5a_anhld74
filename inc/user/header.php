@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <!-- Link bootstrap icon ở trên -->
     <link rel="stylesheet" href="../source/css/main.css">
-    <title>Vux's Web</title>
+    <title>VCS School</title>
 </head>
 <body>
     <!-- Responsive Navbar -->

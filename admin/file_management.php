@@ -6,12 +6,12 @@
     if (isset($_POST['submit'])){
         $username = mysqli_real_escape_string($conn, $_POST['username']);
         // $_SESSION['delete_user'] = $username;
-        $select = "SELECT * FROM user_form WHERE username = '$username'";
+        $select = "SELECT * FROM user WHERE username = '$username'";
         $result = mysqli_query($conn, $select); 
         if(mysqli_num_rows($result) == 0){
             $error[] = 'This username doesn\'t exist!';
         }else{
-            $select = "SELECT user_form.username, upload.name, upload.upload_time, upload.id FROM user_form INNER JOIN upload ON user_form.username = upload.uploader WHERE user_form.username = '$username' ORDER BY upload.name ASC;";
+            $select = "SELECT user.username, upload.name, upload.upload_time, upload.id FROM user INNER JOIN upload ON user.username = upload.uploader WHERE user.username = '$username' ORDER BY upload.name ASC;";
             $result = mysqli_query($conn, $select); 
             if(mysqli_num_rows($result) == 0){
                 $error[] = "This username hasn't uploaded any file!";
