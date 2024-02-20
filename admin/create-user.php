@@ -8,10 +8,10 @@
         $email = mysqli_real_escape_string($conn, $_POST['email']);
         $pass = md5($_POST['password']); 
         $type = $_POST['type'];
-        $select = "SELECT * FROM user_form WHERE username = '$username' OR email = '$email'";
+        $select = "SELECT * FROM user  WHERE username = '$username' OR email = '$email'";
         $result = mysqli_query($conn, $select); 
         if(mysqli_num_rows($result) > 0){
-            $select = "SELECT * FROM user_form WHERE username = '$username'";
+            $select = "SELECT * FROM user  WHERE username = '$username'";
             $result = mysqli_query($conn, $select);
             if(mysqli_num_rows($result) > 0){
                 $error[] = 'This username has already been used!';
@@ -20,7 +20,7 @@
                 $error[] = 'This email has already already been registered!';
             }
         }else{
-            $insert = "INSERT INTO user_form(username, email, password, type) VALUES ('$username', '$email', '$pass', '$type')";
+            $insert = "INSERT INTO user (username, email, password, type) VALUES ('$username', '$email', '$pass', '$type')";
             mysqli_query($conn, $insert);
             $success[] = "Successfully created!";
         }

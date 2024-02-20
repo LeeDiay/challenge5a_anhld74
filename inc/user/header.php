@@ -17,7 +17,7 @@
     <!-- Responsive Navbar -->
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 fixed-top">
         <div class="container">
-            <a href="./page_user.php" class="navbar-brand">Vux's web</a>
+            <a href="./page_user.php" class="navbar-brand">VCS School</a>
             <button 
               class="navbar-toggler" 
               type="button" 
