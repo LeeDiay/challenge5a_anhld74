@@ -8,10 +8,10 @@
         
     $username = mysqli_real_escape_string($conn, $_POST['username']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
-    $pass = md5($_POST['password']);
+    $pass = md5($_POST['password']);    
     $cpass = md5($_POST['cpassword']);
     $type = $_POST['type'];
-
+//tet
         $select = "SELECT * FROM user WHERE username = '$username' OR email = '$email'";
         $result = mysqli_query($conn, $select); 
         // mysqli_query(connection, query, resultmode): thực hiện cái truy vấn đó trên DB 
