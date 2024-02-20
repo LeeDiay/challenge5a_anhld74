@@ -36,12 +36,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <!-- Link bootstrap icon ở trên -->
     <link rel="stylesheet" href="./source/css/main.css">
-    <title>VCS Web</title>
+    <title>VCS School Web</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 fixed-top">
         <div class="container">
-            <a href="index.php" class="navbar-brand">VCS</a>
+            <a href="index.php" class="navbar-brand">VCS School</a>
             <button 
             class="btn btn-primary btn-large" 
             type="button" 
@@ -63,7 +63,7 @@
                                 Đây là một cái card giới thiệu
                             </h6>
                             <p class="card-text">
-                                Web demo 
+                                Web demo Week 2 + 3 VCS Training
                             </p>
                         </div>
                     </div>
