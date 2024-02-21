@@ -75,7 +75,7 @@
                                     <label for="utype" class="form-label">Select user type:</label>
                                     <select class="form-select" name='type'>
                                         <option value="user">User</option>
-                                        <option value="admin">Admin</option>
+                                        <option value="admin">Admin</option> //
                                     </select>
                                 <div class="d-flex flex-row-reverse" style="margin-top: 1rem;">
                                     <button type="submit" name='submit' class="btn btn-primary">Create</button>
