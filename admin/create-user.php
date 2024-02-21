@@ -5,8 +5,10 @@
     @include '../logout.php';
     if (isset($_POST['submit'])){
         $username = mysqli_real_escape_string($conn, $_POST['username']);
+        $name = mysqli_real_escape_string($conn, $_POST['name']);
         $email = mysqli_real_escape_string($conn, $_POST['email']);
-        $pass = md5($_POST['password']); 
+        $phone = mysqli_real_escape_string($conn, $_POST['phone']);
+        $pass = md5($_POST['password']);    
         $type = $_POST['type'];
         $select = "SELECT * FROM user  WHERE username = '$username' OR email = '$email'";
         $result = mysqli_query($conn, $select); 
@@ -20,7 +22,7 @@
                 $error[] = 'This email has already already been registered!';
             }
         }else{
-            $insert = "INSERT INTO user (username, email, password, type) VALUES ('$username', '$email', '$pass', '$type')";
+            $insert = "INSERT INTO user (username, name, email, phone, password, type) VALUES ('$username','$name', '$email' , '$phone', '$pass','$type')";
             mysqli_query($conn, $insert);
             $success[] = "Successfully created!";
         }
@@ -50,16 +52,25 @@
                                     }
                                 ?>
                                 <div class="mb-3">
-                                    <label for="username" class="form-label">Enter username:</label>
-                                    <input type="text" name='username' class="form-control" id="username">
+                                    <label for="username" class="form-label">Enter Username:</label>
+                                    <input type="text" name='username' required class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Enter Name:</label>
+                                    <input type="text" name='name' required class="form-control">
                                 </div>
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Enter email:</label>
-                                    <input type="email" name='email' class="form-control" id="email" aria-describedby="emailHelp">
+                                    <input type="email" name='email' required class="form-control" id="email" aria-describedby="emailHelp">
+                                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="password" class="form-label">Enter password</label>
-                                    <input type="password" name='password' class="form-control">
+                                    <label for="phone" class="form-label">Enter Phone number:</label>
+                                    <input type="text" name='phone' required class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">Enter password:</label>
+                                    <input type="password" name='password' required class="form-control">
                                 </div>
                                     <label for="utype" class="form-label">Select user type:</label>
                                     <select class="form-select" name='type'>

@@ -17,9 +17,12 @@
     if (isset($_POST['update'])){
         $update_user = $_SESSION['update_user'];
         $nusername = mysqli_real_escape_string($conn, $_POST['nusername']);
+        $nname = mysqli_real_escape_string($conn, $_POST['nname']);
         $nemail = mysqli_real_escape_string($conn, $_POST['nemail']);
+        $nphone = mysqli_real_escape_string($conn, $_POST['nphone']);
         $npass = md5($_POST['npassword']);
-        $query = "UPDATE user SET username='$nusername', email='$nemail', password='$npass' WHERE username='$update_user'";
+        $ntype = $_POST['ntype'];
+        $query = "UPDATE user SET username='$nusername', name='$nname', email='$nemail', phone = '$nphone', password='$npass', type= '$ntype' WHERE username='$update_user'";
         mysqli_query($conn, $query);
         unset($update_user);
         $success[] = 'Update successfully';
@@ -65,17 +68,30 @@
                                         <div class="d-flex flex-column col-md justify-content-center" style="margin-top: 1rem;">
                                             <form class="text-start" method='POST'>                                
                                                 <div class="mb-3">
-                                                    <label for="username" class="form-label">Enter username:</label>
+                                                    <label for="username" class="form-label">Enter new username:</label>
                                                     <input type="text" name='nusername' class="form-control" id="username" value="<?php echo $user[0]['username']; ?>">
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="email" class="form-label">Enter email:</label>
+                                                    <label for="name" class="form-label">Enter new name:</label>
+                                                    <input type="text" name='nname' class="form-control" id="name" value="<?php echo $user[0]['name']; ?>">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="email" class="form-label">Enter new email:</label>
                                                     <input type="email" name='nemail' class="form-control" id="email" aria-describedby="emailHelp" value="<?php echo $user[0]['email']; ?>">
                                                  </div>
+                                                 <div class="mb-3">
+                                                    <label for="phone" class="form-label">Enter new phone:</label>
+                                                    <input type="text" name='nphone' class="form-control" id="phone" value="<?php echo $user[0]['phone']; ?>">
+                                                </div>
                                                 <div class="mb-3">
                                                     <label for="password" class="form-label">Enter new password:</label>
                                                     <input type="password" name='npassword' class="form-control">
                                                 </div>
+                                                <label for="utype" class="form-label">Select user type:</label>
+                                                    <select class="form-select" name='ntype'>
+                                                        <option value="user">User</option>
+                                                        <option value="admin">Admin</option>
+                                                    </select>
                                                 <div class="d-flex flex-row-reverse">
                                                     <button type="submit" name='update' class="btn btn-primary">Update</button>
                                                 </div>
