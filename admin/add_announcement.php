@@ -7,9 +7,9 @@
         if ($_POST['post'] == "")
             $errors[] = "There is nothing yet!";
         else{
-            $content = $_POST['post'];
             $uploader = $_SESSION['username'];
-            $query = "INSERT INTO post(uploader, content) VALUES ('$uploader', '$content')";
+            $content = $_POST['post'];
+            $query = "INSERT INTO post(uploader, content, post_time) VALUES ('$uploader', '$content', NOW())";
             mysqli_query($conn, $query);
             $successes[] = 'Post successfully!'; 
         }
