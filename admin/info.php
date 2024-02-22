@@ -1,8 +1,9 @@
 <?php
     session_start();
     @include '../inc/config.php';
-    @include './check_user.php';
+    @include './check_admin.php';
     @include '../logout.php';
+   
     $username = $_SESSION['username'];
     $select = "SELECT * FROM user WHERE username = '$username'";
     $result = mysqli_query($conn, $select);
@@ -10,7 +11,7 @@
 ?>
 
 <?php
-    @include '../inc/user/header.php';
+    @include '../inc/admin/header.php';
 ?>
 
 

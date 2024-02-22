@@ -1,8 +1,9 @@
 <?php
+    session_start();
     @include './inc/config.php';
     @include './check_user.php';
     @include '../logout.php';
-    session_start();
+    
 ?>
 
 <?php @include '../inc/user/header.php'; ?>

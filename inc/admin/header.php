@@ -27,6 +27,9 @@
             <div class="collapse navbar-collapse" id="navmenu">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
+                        <a class="btn btn-dark" href="../admin/info.php" role="button">My account</a>
+                    </li>
+                    <li class="nav-item">
                         <div class="dropdown">
                             <button 
                             class="btn btn-dark dropdown-toggle" 

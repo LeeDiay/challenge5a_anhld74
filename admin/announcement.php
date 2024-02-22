@@ -21,9 +21,11 @@
                                 <div>
                                     <?php echo $post['content']; ?>
                                 </div>
+                               
                                 <div class="text-secondary">
                                     By <?php echo $post['uploader'] . ' on ' . $post['post_time']; ?>
                                 </div>
+                                <a href="create-user.php"> Click to follow  </a>
                             </div>
                         </div>
                     </div>
