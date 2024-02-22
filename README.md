@@ -36,4 +36,3 @@ nhập gợi ý về challenge và submit. (Đáp án chính là tên file mà
 giáo viên upload lên. Không lưu đáp án ra file, DB,…) (1đ)
 o Sinh viên xem gợi ý và nhập đáp án. Khi sinh viên nhập đúng thì
 trả về nội dung bài thơ, văn,… lưu trong file đáp án (1đ).
-hi
