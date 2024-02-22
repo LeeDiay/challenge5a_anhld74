@@ -52,7 +52,7 @@
                                 ?>
                                 <div class="mb-3">
                                     <label for="username" class="form-label">Enter username:</label>
-                                    <input type="text" name='username' class="form-control" id="username">
+                                    <input type="text" name='username' class="form-control" id="username" required>
                                 </div>
                                 
                                 <div class="d-flex flex-row-reverse" style="margin-top: 1rem;">
@@ -69,23 +69,23 @@
                                             <form class="text-start" method='POST'>                                
                                                 <div class="mb-3">
                                                     <label for="username" class="form-label">Enter new username:</label>
-                                                    <input type="text" name='nusername' class="form-control" id="username" value="<?php echo $user[0]['username']; ?>">
+                                                    <input type="text" name='nusername' class="form-control" id="username" value="<?php echo $user[0]['username']; ?>" required>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="name" class="form-label">Enter new name:</label>
-                                                    <input type="text" name='nname' class="form-control" id="name" value="<?php echo $user[0]['name']; ?>">
+                                                    <input type="text" name='nname' class="form-control" id="name" value="<?php echo $user[0]['name']; ?>" required>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="email" class="form-label">Enter new email:</label>
-                                                    <input type="email" name='nemail' class="form-control" id="email" aria-describedby="emailHelp" value="<?php echo $user[0]['email']; ?>">
+                                                    <input type="email" name='nemail' class="form-control" id="email" aria-describedby="emailHelp" value="<?php echo $user[0]['email']; ?>" required>
                                                  </div>
                                                  <div class="mb-3">
                                                     <label for="phone" class="form-label">Enter new phone:</label>
-                                                    <input type="text" name='nphone' class="form-control" id="phone" value="<?php echo $user[0]['phone']; ?>">
+                                                    <input type="text" name='nphone' class="form-control" id="phone" value="<?php echo $user[0]['phone']; ?>" required>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="password" class="form-label">Enter new password:</label>
-                                                    <input type="password" name='npassword' class="form-control">
+                                                    <input type="password" name='npassword' class="form-control" required>
                                                 </div>
                                                 <label for="utype" class="form-label">Select user type:</label>
                                                     <select class="form-select" name='ntype'>

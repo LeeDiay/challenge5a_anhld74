@@ -36,6 +36,16 @@
                             <div class="d-flex justify-content-around">
                                 <div class="text-end" style="min-width: 10rem;">
                                     <h6 class="text-start card-title" style="margin-top: 0.1rem;">
+                                        Name:
+                                    </h6>
+                                </div>
+                                <div class="text-end" style="min-width: 10rem;">
+                                    <?php echo $info[0]['name']; ?>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-around">
+                                <div class="text-end" style="min-width: 10rem;">
+                                    <h6 class="text-start card-title" style="margin-top: 0.1rem;">
                                         Email:
                                     </h6>
                                 </div>
@@ -46,13 +56,23 @@
                             <div class="d-flex justify-content-around">
                                 <div class="text-end" style="min-width: 10rem;">
                                     <h6 class="text-start card-title" style="margin-top: 0.1rem;">
+                                        Phone Number:
+                                    </h6>
+                                </div>
+                                <div class="text-end" style="min-width: 10rem;">
+                                    <?php echo $info[0]['phone']; ?>
+                                </div>
+                            </div>
+                            <!-- <div class="d-flex justify-content-around">
+                                <div class="text-end" style="min-width: 10rem;">
+                                    <h6 class="text-start card-title" style="margin-top: 0.1rem;">
                                         Role:
                                     </h6>
                                 </div>
                                 <div class="text-end" style="min-width: 10rem;">
                                     <?php echo $info[0]['type']; ?>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
