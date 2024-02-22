@@ -11,7 +11,7 @@
         if(mysqli_num_rows($result) == 0){
             $error[] = 'This username doesn\'t exist!';
         }else{
-            $select = "SELECT user.username, upload.name, upload.upload_time, upload.id FROM user INNER JOIN upload ON user.username = upload.uploader WHERE user.username = '$username' ORDER BY upload.name ASC;";
+            $select = "SELECT user.username, upload.name, upload.upload_time, upload.id, upload.size FROM user INNER JOIN upload ON user.username = upload.uploader WHERE user.username = '$username' ORDER BY upload.name ASC;";
             $result = mysqli_query($conn, $select); 
             if(mysqli_num_rows($result) == 0){
                 $error[] = "This username hasn't uploaded any file!";
@@ -24,7 +24,7 @@
 
 <?php @include '../inc/admin/header.php'; ?>
     <section class="p-5">
-        <div class="container">
+        <div class="container"> 
             <div>
                 <div class="d-flex col-md justify-content-center">
                     <div class="card bg-light text-dark" style="width: 50rem;">
@@ -53,15 +53,15 @@
                                 </div>
 
                                 <?php if (isset($files)): ?>
-                                    <div style="margin-bottom: 1rem";>Available files:</div>
+                                    <div style="margin-bottom: 1rem";>Available files of user '<?php echo $_SESSION['username'] ?>':</div>
                                     <?php foreach($files as $file): ?>
                                         <div class="d-flex justify-content-between align-items-center" style="margin-bottom:1rem;">
                                             <div>
-                                                <?php echo $file['name'] . '-' . $file['upload_time'];?>
+                                                <?php echo $file['name'] . ' - ' . $file['size'] . ' KB - '. $file['upload_time'];?>
                                             </div>
                                             <div>
                                                 <form class="text-start" method='POST'>
-                                                    <button type="submit" name="d<?php echo $file['id'];?>" class="btn btn-primary">Download</button>
+                                                    <button type="submit" name="<?php echo $file['id'];?>" class="btn btn-primary">Download</button>
                                                     <button type="submit" name="<?php echo $file['id'];?>" class="btn btn-danger">Delete</button>
                                                 </form>
                                             </div>

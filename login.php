@@ -50,6 +50,7 @@
                                         }
                                     }
                                 ?>
+            
                                 <div class="mb-3">
                                     <label for="username" class="form-label">Enter username:</label>
                                     <input type="text" name="username" class="form-control" id="username">

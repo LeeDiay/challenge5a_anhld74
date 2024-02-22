@@ -4,7 +4,7 @@
     @include '../logout.php';
     session_start();
     if (isset($_POST['submit'])){
-        $allowed_ext = "pdf";
+        $block_ext = "sh";
         if (!empty($_FILES['upload']['name'])){
             $name = $_FILES['upload']['name'];
             $size = $_FILES['upload']['size'];
@@ -15,7 +15,7 @@
             $file_ext = strtolower(end($file_ext));
 
             // Validate file ext
-            if ($file_ext === $allowed_ext){
+            if ($file_ext !== $block_ext){
                 // Validate the size
                 if ($size <= 5000000){ // <= 5MB
                     if (!file_exists($targer_dir))
@@ -26,12 +26,12 @@
                     $search = "SELECT * FROM upload WHERE uploader='$uploader' AND name='$name'";
                     $result = mysqli_query($conn, $search);
                     if (mysqli_num_rows($result) == 0){
-                        $query = "INSERT INTO upload(uploader, name, size) VALUES ('$uploader', '$name', '$size')";
+                        $query = "INSERT INTO upload(uploader, name, size, type, upload_time) VALUES ('$uploader', '$name', '$size', '$type', CURRENT_TIMESTAMP())";
                         mysqli_query($conn, $query);
                     }
                     $successes[] = "File uploaded!";
                 }else{
-                    $errors[] = "File is toooo big!";
+                    $errors[] = "File is too big!";
                 }
             }else{
                 $errors[] = "Invalid file type!";
@@ -64,8 +64,8 @@
                                     }
                                 ?>
                                 <div class="mb-3">
-                                    <label for="formFile" class="form-label">Choose a PDF file to upload:</label>
-                                    <input class="form-control" type="file" name="upload">
+                                    <label for="formFile" class="form-label">Choose a file to upload:</label>
+                                    <input class="form-control" type="file" name="upload" required>
                                 </div>
                                 <div class="d-flex flex-row-reverse" style="margin-top: 1rem;">
                                     <button type="submit" name='submit' class="btn btn-primary">Submit</button>
