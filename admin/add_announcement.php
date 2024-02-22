@@ -4,11 +4,11 @@
     @include './check_admin.php';
     @include '../logout.php';
     if (isset($_POST['submit'])){
-        if ($_POST['post'] == "")
+        if ($_POST['post'] === "")
             $errors[] = "There is nothing yet!";
         else{
-            $uploader = $_SESSION['username'];
             $content = $_POST['post'];
+            $uploader = $_SESSION['username'];
             $query = "INSERT INTO post(uploader, content, post_time) VALUES ('$uploader', '$content', NOW())";
             mysqli_query($conn, $query);
             $successes[] = 'Post successfully!'; 

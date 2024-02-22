@@ -11,7 +11,7 @@
         if(mysqli_num_rows($result) == 0){
             $error[] = 'This username doesn\'t exist!';
         }else{
-            $select = "SELECT user.username, upload.name, upload.upload_time, upload.id, upload.size FROM user INNER JOIN upload ON user.username = upload.uploader WHERE user.username = '$username' ORDER BY upload.name ASC;";
+            $select = "SELECT user.username, upload.name, upload.upload_time, upload.id, upload.size FROM user INNER JOIN upload ON user.username = upload.uploader WHERE user.username = '$username' ORDER BY upload.upload_time ASC;";
             $result = mysqli_query($conn, $select); 
             if(mysqli_num_rows($result) == 0){
                 $error[] = "This username hasn't uploaded any file!";
@@ -27,7 +27,7 @@
         <div class="container"> 
             <div>
                 <div class="d-flex col-md justify-content-center">
-                    <div class="card bg-light text-dark" style="width: 50rem;">
+                    <div class="card bg-light text-dark" style="width: 100rem;">
                         <div class="card-body text-center">
                             <form class="text-start" method='POST'>
                                 <h3 class="text-center">File Management</h3>

@@ -52,7 +52,7 @@
                                 ?>
                                 <div class="mb-3">
                                     <label for="username" class="form-label">Enter username:</label>
-                                    <input type="text" name='username' class="form-control" id="username" required>
+                                    <input type="text" name='username' class="form-control" id="username">
                                 </div>
                                 
                                 <div class="d-flex flex-row-reverse" style="margin-top: 1rem;">

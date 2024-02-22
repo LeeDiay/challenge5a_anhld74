@@ -1,5 +1,5 @@
 <?php
-    if ($_SESSION['role'] !== 'user') {
+    if (!empty($_SESSION['username'])) {
         http_response_code(403);
         die(); 
     }
