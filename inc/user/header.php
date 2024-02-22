@@ -28,7 +28,7 @@
             <div class="collapse navbar-collapse" id="navmenu">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="btn btn-dark" href="./info.php" role="button">Account information</a>
+                        <a class="btn btn-dark" href="./info.php" role="button">My account</a>
                     </li>
                     <li class="nav-item">
                         <a class="btn btn-dark" href="./upload.php" role="button">File upload</a>

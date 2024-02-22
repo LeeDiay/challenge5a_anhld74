@@ -40,6 +40,7 @@
                                 Account management
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="account-management">
+                                <a href="show-user.php" class="dropdown-item">Show account</a>
                                 <a href="create-user.php" class="dropdown-item">Create account</a>
                                 <a href="delete-user.php" class="dropdown-item">Delete account</a>
                                 <a href="update-user.php" class="dropdown-item">Update account</a>
