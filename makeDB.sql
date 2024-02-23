@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS user (
     name VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
-    phone VARCHAR(20),
+    phone VARCHAR(20), NOT NULL
     avatar VARCHAR(255),
     type VARCHAR(50)
 );
