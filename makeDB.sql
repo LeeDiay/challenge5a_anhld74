@@ -15,7 +15,7 @@ CREATE TABLE user (
 
 CREATE TABLE post (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    uploader INT,
+    uploader VARCHAR(255) NOT NULL,
     content TEXT,
     post_time DATETIME
 );

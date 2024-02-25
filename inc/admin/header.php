@@ -67,11 +67,27 @@
                         </div>
                     </li>
                     <li class="nav-item">
+                        <div class="dropdown">
+                            <button 
+                            class="btn btn-dark dropdown-toggle" 
+                            type="button" id="account-management" 
+                            data-bs-toggle="dropdown" 
+                            aria-haspopup="true" 
+                            aria-expanded="false">
+                                Manage announcement
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="account-management">
+                                <a href="announcement.php" class="dropdown-item">Announcement</a>
+                                <a href="add_announcement.php" class="dropdown-item">Add announcement</a>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- <li class="nav-item">
                         <a class="btn btn-dark" href="add_announcement.php" role="button">Add announcement</a>
                     </li>
                     <li class="nav-item">
                         <a class="btn btn-dark" href="announcement.php" role="button">Announcement</a>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <form class="text-start" method='POST'>
                             <button type="submit" name="logout" class="btn btn-primary">Log out</button>
