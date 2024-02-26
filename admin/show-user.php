@@ -24,6 +24,10 @@
                         <div class="avatar" style="flex: 0 0 100px; margin-right: 20px;">
                             <img src="../source/img/hello.png" alt="">
                         </div>
+                        <!-- <div class="avatar" style="flex: 0 0 60px; margin-right: 20px;">
+                            <img src="<?php echo $user['avatar']; ?>" alt="Avatar" style="max-width: 100%; max-height: 60px;">
+                        </div> -->
+
                         <div class="user-info flex-grow-1">
                             <div class="d-flex justify-content-around">
                                 <div class="text-end" style="min-width: 10rem;">
