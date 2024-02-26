@@ -18,7 +18,7 @@
         <div class="container">
             <div>
                 <div class="d-flex col-md justify-content-center">
-                    <div class="card bg-dark text-light" style="min-width: 25rem;">
+                    <div class="card bg-dark text-light" style="min-widtxh: 25rem;">
                         <div class="card-body text-center">
                             <div class="mb-3">
                                 <img src="<?php echo '../avatar_user/' . $info[0]['avatar']; ?>" alt="Avatar" style="width: 200px; height: 200px; border-radius: 30%;">
