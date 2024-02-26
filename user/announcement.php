@@ -19,7 +19,7 @@
                         <div class="card bg-light text-dark" style="width: 50rem;">
                             <div class="card-body text-center">
                                 <div>
-                                    <?php echo $post['content']; ?>
+                                    <strong><?php echo $post['content']; ?></strong>
                                 </div>
                                 <div class="text-secondary">
                                     By <?php echo $post['uploader'] . ' on ' . $post['post_time']; ?>
