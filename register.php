@@ -39,7 +39,7 @@
                         } else {
                             $file_destination = './avatar_user/' . $file_name;
                             move_uploaded_file($file_tmp, $file_destination);
-                            $avatar_path = $file_destination;
+                            $avatar_path = $file_name;
                         }
                     } else {
                         $error[] = 'Error uploading file';

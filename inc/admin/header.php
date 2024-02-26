@@ -37,7 +37,7 @@
                             data-bs-toggle="dropdown" 
                             aria-haspopup="true" 
                             aria-expanded="false">
-                                Account management
+                                Account manage
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="account-management">
                                 <a href="show-user.php" class="dropdown-item">Show account</a>
@@ -48,7 +48,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-dark" href="../admin/file_management.php" role="button">File management</a>
+                        <a class="btn btn-dark" href="../admin/file_management.php" role="button">File manage</a>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown">
@@ -58,7 +58,7 @@
                             data-bs-toggle="dropdown" 
                             aria-haspopup="true" 
                             aria-expanded="false">
-                                Page management
+                                Page manage
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="page-management">
                                 <li class="dropdown-item">Download file</li>
@@ -67,11 +67,27 @@
                         </div>
                     </li>
                     <li class="nav-item">
+                        <div class="dropdown">
+                            <button 
+                            class="btn btn-dark dropdown-toggle" 
+                            type="button" id="account-management" 
+                            data-bs-toggle="dropdown" 
+                            aria-haspopup="true" 
+                            aria-expanded="false">
+                                 Announcement manage
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="account-management">
+                                <a href="announcement.php" class="dropdown-item"> Show announcement</a>
+                                <a href="add_announcement.php" class="dropdown-item">Add announcement</a>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- <li class="nav-item">
                         <a class="btn btn-dark" href="add_announcement.php" role="button">Add announcement</a>
                     </li>
                     <li class="nav-item">
                         <a class="btn btn-dark" href="announcement.php" role="button">Announcement</a>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <form class="text-start" method='POST'>
                             <button type="submit" name="logout" class="btn btn-primary">Log out</button>
