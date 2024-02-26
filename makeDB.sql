@@ -29,6 +29,31 @@ CREATE TABLE upload (
     upload_time DATETIME
 );
 
+CREATE TABLE assignments (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    description VARCHAR(255),
+    due_date DATETIME,
+    uploader VARCHAR(255) NOT NULL,
+    file_name VARCHAR(255) NOT NULL,
+    file_path VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE assigned_assignments (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    student_username VARCHAR(255) NOT NULL,
+    assignment_id INT
+);
+
+CREATE TABLE submitted_assignments (
+    assignment_id INT,
+    uploader VARCHAR(255) NOT NULL,
+    file_name VARCHAR(255) NOT NULL,
+    file_size VARCHAR(255) NOT NULL,
+    file_type VARCHAR(255) NOT NULL,
+    upload_time DATETIME
+);
+
 -- hai tài khoản giáo viên và hai tài khoản sinh viên 
 -- tài khoản giáo viên: teacher1 / 123456a@A ; teacher2 / 123456a@A
 -- tài khoản sinh viên: student1 / 123456a@A ; student2 / 123456a@A).
