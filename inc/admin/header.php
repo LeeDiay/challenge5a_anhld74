@@ -54,15 +54,15 @@
                         <div class="dropdown">
                             <button 
                             class="btn btn-dark dropdown-toggle" 
-                            type="button" id="page-management" 
+                            type="button" id="assignment-management" 
                             data-bs-toggle="dropdown" 
                             aria-haspopup="true" 
                             aria-expanded="false">
-                                Page manage
+                                 Assignment manage
                             </button>
-                            <ul class="dropdown-menu" aria-labelledby="page-management">
-                                <li class="dropdown-item">Download file</li>
-                                <li class="dropdown-item">Delete file</li>
+                            <ul class="dropdown-menu" aria-labelledby="account-management">
+                                <a href="announcement.php" class="dropdown-item"> Show assignment</a>
+                                <a href="add_assignment.php" class="dropdown-item">Add assignment</a>
                             </ul>
                         </div>
                     </li>
@@ -70,7 +70,7 @@
                         <div class="dropdown">
                             <button 
                             class="btn btn-dark dropdown-toggle" 
-                            type="button" id="account-management" 
+                            type="button" id="announce-management" 
                             data-bs-toggle="dropdown" 
                             aria-haspopup="true" 
                             aria-expanded="false">

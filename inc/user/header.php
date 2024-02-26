@@ -34,8 +34,25 @@
                         <a class="btn btn-dark" href="./show-user.php" role="button">My class</a>
                     </li>
                     <li class="nav-item">
+                        <div class="dropdown">
+                            <button 
+                            class="btn btn-dark dropdown-toggle" 
+                            type="button" id="announce-management" 
+                            data-bs-toggle="dropdown" 
+                            aria-haspopup="true" 
+                            aria-expanded="false">
+                                 My assignment
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="account-management">
+                                <a href="show_assignment.php" class="dropdown-item"> Show assignment</a>
+                                <a href="upload_assignment.php" class="dropdown-item">Upload assignment</a>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
                         <a class="btn btn-dark" href="./upload.php" role="button">File upload</a>
                     </li>
+
                     <li class="nav-item">
                         <a class="btn btn-dark" href="./announcement.php" role="button">Announcement</a>
                     </li>
