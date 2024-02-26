@@ -1,7 +1,7 @@
 <?php
     if ($_SESSION['role'] !== 'admin') {
-        http_response_code(403);
-        echo "Truy cập bị từ chối!";
-        die(); 
+       // Điều hướng đến trang lỗi error_page.php
+        header("Location: ../error_page.php");
+        exit; 
     }
-?>  
+?>
