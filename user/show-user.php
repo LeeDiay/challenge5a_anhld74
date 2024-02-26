@@ -3,10 +3,11 @@
     @include '../inc/config.php';
     @include './check_user.php';
     @include '../logout.php';
-    $username = $_SESSION['username'];
-    $select = "SELECT * FROM user WHERE username = '$username'";
+   
+    // Lấy tất cả người dùng từ cơ sở dữ liệu
+    $select = "SELECT * FROM user WHERE type = 'user' ";
     $result = mysqli_query($conn, $select);
-    $info = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    $users = mysqli_fetch_all($result, MYSQLI_ASSOC);
 ?>
 
 <?php
@@ -15,14 +16,15 @@
 
 
 <section class="p-5">
-        <div class="container">
-            <div>
-                <div class="d-flex col-md justify-content-center">
-                    <div class="card bg-dark text-light" style="min-widtxh: 25rem;">
-                        <div class="card-body text-center">
-                            <div class="mb-3">
-                                <img src="<?php echo '../avatar_user/' . $info[0]['avatar']; ?>" alt="Avatar" style="width: 200px; height: 200px; border-radius: 30%;">
-                            </div>
+    <div class="container">
+        <?php foreach ($users as $user): ?>
+            <div class="d-flex col-md justify-content-center mb-4">
+                <div class="card bg-dark text-light" style="min-width: 45rem;">
+                    <div class="card-body d-flex align-items-center">
+                    <div class="avatar" style="flex: 0 0 100px; margin-right: 40px;">
+                        <img src="<?php echo '../avatar_user/' . $user['avatar']; ?>" alt="Avatar" style="width: 100px; height: 100px; border-radius: 40%;">
+                    </div>
+                        <div class="user-info flex-grow-1">
                             <div class="d-flex justify-content-around">
                                 <div class="text-end" style="min-width: 10rem;">
                                     <h6 class="text-start card-title" style="margin-top: 0.1rem;">
@@ -30,7 +32,7 @@
                                     </h6>
                                 </div>
                                 <div class="text-end" style="min-width: 10rem;">
-                                    <?php echo $info[0]['username']; ?>
+                                    <?php echo $user['username']; ?>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-around">
@@ -40,7 +42,7 @@
                                     </h6>
                                 </div>
                                 <div class="text-end" style="min-width: 10rem;">
-                                    <?php echo $info[0]['name']; ?>
+                                    <?php echo $user['name']; ?>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-around">
@@ -50,7 +52,7 @@
                                     </h6>
                                 </div>
                                 <div class="text-end" style="min-width: 10rem;">
-                                    <?php echo $info[0]['email']; ?>
+                                    <?php echo $user['email']; ?>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-around">
@@ -60,7 +62,7 @@
                                     </h6>
                                 </div>
                                 <div class="text-end" style="min-width: 10rem;">
-                                    <?php echo $info[0]['phone']; ?>
+                                    <?php echo $user['phone']; ?>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-around">
@@ -70,13 +72,14 @@
                                     </h6>
                                 </div>
                                 <div class="text-end" style="min-width: 10rem;">
-                                    <?php echo $info[0]['type']; ?>
+                                    <?php echo $user['type']; ?>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        <?php endforeach; ?>
+    </div>
+</section>
 <?php @include '../inc/footer.php'; ?>

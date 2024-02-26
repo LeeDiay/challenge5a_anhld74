@@ -31,6 +31,9 @@
                         <a class="btn btn-dark" href="./info.php" role="button">My account</a>
                     </li>
                     <li class="nav-item">
+                        <a class="btn btn-dark" href="./show-user.php" role="button">My class</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="btn btn-dark" href="./upload.php" role="button">File upload</a>
                     </li>
                     <li class="nav-item">
