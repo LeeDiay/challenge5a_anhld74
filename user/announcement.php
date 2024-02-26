@@ -3,7 +3,7 @@
     @include '../inc/config.php';
     @include './check_user.php';
     @include '../logout.php';
-    $query = "SELECT * FROM post ORDER BY post_time";
+    $query = "SELECT * FROM post ORDER BY post_time DESC";
     $result = mysqli_query($conn, $query);
     if (mysqli_num_rows($result) > 0){
         $posts = mysqli_fetch_all($result, MYSQLI_ASSOC);

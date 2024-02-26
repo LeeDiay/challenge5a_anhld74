@@ -3,7 +3,7 @@
     @include '../inc/config.php';
     @include './check_admin.php';
     @include '../logout.php';
-    $query = "SELECT * FROM post ORDER BY post_time";
+    $query = "SELECT * FROM post ORDER BY post_time DESC";
     $result = mysqli_query($conn, $query);
     if (mysqli_num_rows($result) > 0){
         $posts = mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -19,7 +19,7 @@
                         <div class="card bg-light text-dark" style="width: 50rem;">
                             <div class="card-body text-center">
                                 <div>
-                                    <?php echo $post['content']; ?>
+                                    <strong><?php echo $post['content']; ?> </strong>
                                 </div>
                                
                                 <div class="text-secondary">

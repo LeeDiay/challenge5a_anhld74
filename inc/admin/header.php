@@ -37,7 +37,7 @@
                             data-bs-toggle="dropdown" 
                             aria-haspopup="true" 
                             aria-expanded="false">
-                                Account management
+                                Account manage
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="account-management">
                                 <a href="show-user.php" class="dropdown-item">Show account</a>
@@ -48,7 +48,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-dark" href="../admin/file_management.php" role="button">File management</a>
+                        <a class="btn btn-dark" href="../admin/file_management.php" role="button">File manage</a>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown">
@@ -58,7 +58,7 @@
                             data-bs-toggle="dropdown" 
                             aria-haspopup="true" 
                             aria-expanded="false">
-                                Page management
+                                Page manage
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="page-management">
                                 <li class="dropdown-item">Download file</li>
@@ -74,10 +74,10 @@
                             data-bs-toggle="dropdown" 
                             aria-haspopup="true" 
                             aria-expanded="false">
-                                Manage announcement
+                                 Announcement manage
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="account-management">
-                                <a href="announcement.php" class="dropdown-item">Announcement</a>
+                                <a href="announcement.php" class="dropdown-item"> Show announcement</a>
                                 <a href="add_announcement.php" class="dropdown-item">Add announcement</a>
                             </ul>
                         </div>

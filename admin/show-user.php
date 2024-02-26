@@ -19,11 +19,11 @@
     <div class="container">
         <?php foreach ($users as $user): ?>
             <div class="d-flex col-md justify-content-center mb-4">
-                <div class="card bg-dark text-light" style="min-width: 25rem;">
+                <div class="card bg-dark text-light" style="min-width: 50rem;">
                     <div class="card-body d-flex align-items-center">
-                        <div class="avatar" style="flex: 0 0 100px; margin-right: 20px;">
-                            <img src="../source/img/hello.png" alt="">
-                        </div>
+                    <div class="avatar" style="flex: 0 0 100px; margin-right: 40px;">
+                        <img src="<?php echo '../avatar_user/' . $user['avatar']; ?>" alt="Avatar" style="width: 100px; height: 100px; border-radius: 40%;">
+                    </div>
                         <div class="user-info flex-grow-1">
                             <div class="d-flex justify-content-around">
                                 <div class="text-end" style="min-width: 10rem;">
