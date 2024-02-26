@@ -32,13 +32,13 @@ CREATE TABLE upload (
 -- hai tài khoản giáo viên và hai tài khoản sinh viên 
 -- tài khoản giáo viên: teacher1 / 123456a@A ; teacher2 / 123456a@A
 -- tài khoản sinh viên: student1 / 123456a@A ; student2 / 123456a@A).
-
+-- mã hóa mật khẩu thành dạng md5
 -- Tài khoản giáo viên
 INSERT INTO user (username, name, password, email, type)
-VALUES ('teacher1', 'Teacher 1', '123456a@A', 'teacher1@example.com', 'admin'),
-       ('teacher2', 'Teacher 2', '123456a@A', 'teacher2@example.com', 'admin');
+VALUES ('teacher1', 'Teacher 1', 'f83e69e4170a786e44e3d32a2479cce9', 'teacher1@example.com', 'admin'),
+       ('teacher2', 'Teacher 2', 'f83e69e4170a786e44e3d32a2479cce9', 'teacher2@example.com', 'admin');
 
 -- Tài khoản sinh viên
 INSERT INTO user (username, name, password, email, type)
-VALUES ('student1', 'Student 1', '123456a@A', 'student1@example.com', 'user'),
-       ('student2', 'Student 2', '123456a@A', 'student2@example.com', 'user');
+VALUES ('student1', 'Student 1', 'f83e69e4170a786e44e3d32a2479cce9', 'student1@example.com', 'user'),
+       ('student2', 'Student 2', 'f83e69e4170a786e44e3d32a2479cce9', 'student2@example.com', 'user');
