@@ -11,7 +11,7 @@
         $selected_students = $_POST['students']; 
         $uploader = $_SESSION['username'];
 
-        // File upload h
+        // File upload handling
         $file_name = $_FILES['file']['name'];
         $file_tmp = $_FILES['file']['tmp_name'];
         $file_type = $_FILES['file']['type'];
@@ -91,7 +91,8 @@
                                     }
                                 ?>
                             </div>
-                            <div class="d-flex flex-row-reverse" style="margin-top: 1rem;">
+                            <div class="d-flex justify-content-between" style="margin-top: 1rem;">
+                                <a href="show_assignment.php" class="btn btn-secondary">Back</a>
                                 <button type="submit" name='submit' class="btn btn-primary">Submit</button>
                             </div>
                         </form>

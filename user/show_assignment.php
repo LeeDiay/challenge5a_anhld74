@@ -35,7 +35,7 @@
                                     <?php
                                         while ($row = mysqli_fetch_assoc($result)) {
                                             echo "<tr>";
-                                            echo "<td>{$row['title']}</td>";
+                                            echo "<td><a href='assignment_page.php?id={$row['id']}'>{$row['title']}</a></td>";
                                             echo "<td>{$row['description']}</td>";
                                             echo "<td>{$row['due_date']}</td>";
                                             echo "<td><a href='upload_assignment.php?id={$row['id']}' class='btn btn-primary'>Submit</a></td>"; // Link to upload_assignment.php

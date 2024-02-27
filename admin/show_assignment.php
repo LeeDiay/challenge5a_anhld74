@@ -26,11 +26,9 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                        // Query to retrieve assignments
                                         $query = "SELECT * FROM assignments";
                                         $result = mysqli_query($conn, $query);
                                         while ($row = mysqli_fetch_assoc($result)) {
-                                            // Retrieve assigned students for each assignment
                                             $assignment_id = $row['id'];
                                             $assign_query = "SELECT student_username FROM assigned_assignments WHERE assignment_id = '$assignment_id'";
                                             $assign_result = mysqli_query($conn, $assign_query);
@@ -40,9 +38,9 @@
                                             }
                                             $assigned_students_str = implode(", ", $assigned_students);
 
-                                            // Display assignment details
                                             echo "<tr>";
-                                            echo "<td>{$row['title']}</td>";
+                                            // Thêm liên kết cho tiêu đề
+                                            echo "<td><a href='assignment_page.php?id={$row['id']}'>{$row['title']}</a></td>";
                                             echo "<td>{$row['description']}</td>";
                                             echo "<td>{$row['due_date']}</td>";
                                             echo "<td>{$assigned_students_str}</td>";
