@@ -19,7 +19,7 @@
                                     <tr>
                                         <th scope="col">Assignment Title</th>
                                         <th scope="col">Description</th>
-                                        <th scope="col">Due Date</th>
+                                        <th scope="col">Deadline</th>
                                         <th scope="col">Assigned Students</th>
                                         <th scope="col">Actions</th>
                                     </tr>
@@ -46,7 +46,10 @@
                                             echo "<td>{$row['description']}</td>";
                                             echo "<td>{$row['due_date']}</td>";
                                             echo "<td>{$assigned_students_str}</td>";
-                                            echo "<td><a href='delete_assignment.php?id={$row['id']}' class='btn btn-danger'>Delete</a></td>"; // Apply CSS class to style the button
+                                            echo "<td>
+                                                    <a href='update_assignment.php?id={$row['id']}' class='btn btn-primary'>Update</a>
+                                                    <a href='delete_assignment.php?id={$row['id']}' class='btn btn-danger'>Delete</a>
+                                                  </td>"; 
                                             echo "</tr>";
                                         }
                                     ?>
