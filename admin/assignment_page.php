@@ -28,7 +28,7 @@
         $minutes_left = floor(($time_left % (60 * 60)) / 60);
     } else {
         // Nếu không có ID được truyền, chuyển hướng người dùng trở lại trang danh sách bài tập
-        header("Location: assignments_list.php");
+        header("Location: show_assignment.php");
         exit();
     }
 ?>
@@ -65,12 +65,13 @@
                             }
                         ?>
                     </span></p>
-                    <!-- Nút Back -->
-                    <a href="show_assignment.php" class="btn btn-secondary">Back</a>
-                    <!-- Nút Update -->
-                    <a href="update_assignment.php?id=<?php echo $assignment_id; ?>" class="btn btn-primary">Update</a>
-                    <!-- Nút Delete -->
-                    <a href="delete_assignment.php?id=<?php echo $assignment_id; ?>" class="btn btn-danger">Delete</a>
+                    <div class="d-flex justify-content-between">
+                        <a href="show_assignment.php" class="btn btn-secondary">Back</a>
+                        <div>
+                            <a href="update_assignment.php?id=<?php echo $assignment_id; ?>" class="btn btn-primary">Update</a>
+                            <a href="delete_assignment.php?id=<?php echo $assignment_id; ?>" class="btn btn-danger">Delete</a>
+                        </div>
+                    </div>
                     <!-- Script JavaScript để đếm ngược thời gian -->
                     <script>
                         // Hàm cập nhật thời gian còn lại
