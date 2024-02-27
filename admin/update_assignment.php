@@ -4,67 +4,51 @@
     @include './check_admin.php';
     @include '../logout.php';
 
-    // Check if assignment ID is provided
     if(isset($_GET['id'])) {
         $assignment_id = $_GET['id'];
-        
-        // Retrieve assignment details
         $query = "SELECT * FROM assignments WHERE id = '$assignment_id'";
         $result = mysqli_query($conn, $query);
         $assignment = mysqli_fetch_assoc($result);
         
         if(!$assignment) {
-            // Assignment not found
             echo "Assignment not found.";
             exit;
         }
     } else {
-        // Redirect if assignment ID is not provided
-        header("Location: assignments_list.php");
+        header("Location: show_assignment.php");
         exit;
     }
 
-    // Initialize $selected_students array
     $selected_students = array();
-
-    // Retrieve assigned students for this assignment
     $assign_query = "SELECT student_username FROM assigned_assignments WHERE assignment_id = '$assignment_id'";
     $assign_result = mysqli_query($conn, $assign_query);
     while ($assign_row = mysqli_fetch_assoc($assign_result)) {
         $selected_students[] = $assign_row['student_username'];
     }
 
-    // Update assignment when form is submitted
     if (isset($_POST['submit'])){
         $title = $_POST['title'];
         $description = $_POST['description'];
         $due_date = $_POST['due_date'];
         $uploader = $_SESSION['username'];
 
-        // File upload handling
         $file_name = $_FILES['file']['name'];
         $file_tmp = $_FILES['file']['tmp_name'];
         $file_type = $_FILES['file']['type'];
 
-        // File upload directory
         $upload_folder = "../assignments/";
         $file_path = $upload_folder . $file_name;
 
         move_uploaded_file($file_tmp, $file_path);
 
-        // Update assignment in database
         $update_query = "UPDATE assignments SET title = '$title', description = '$description', due_date = '$due_date', file_name = '$file_name', file_path = '$file_path' WHERE id = '$assignment_id'";
         mysqli_query($conn, $update_query);
 
-        // Update assigned students (if necessary)
         if(isset($_POST['students'])) {
             $selected_students = $_POST['students'];
-
-            // First, delete existing assignments for this assignment
             $delete_assign_query = "DELETE FROM assigned_assignments WHERE assignment_id = '$assignment_id'";
             mysqli_query($conn, $delete_assign_query);
 
-            // Then, reassign to selected students
             foreach ($selected_students as $student) {
                 $assign_query = "INSERT INTO assigned_assignments(student_username, assignment_id) VALUES ('$student', '$assignment_id')";
                 mysqli_query($conn, $assign_query);

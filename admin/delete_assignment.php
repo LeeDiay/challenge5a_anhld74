@@ -16,7 +16,6 @@
         header("Location: show_assignment.php");
         exit();
     } else {
-        // If assignment ID is not provided, redirect back to show_assignment page
         header("Location: show_assignment.php");
         exit();
     }

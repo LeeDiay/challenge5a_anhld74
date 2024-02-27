@@ -27,7 +27,7 @@
         <div class="container"> 
             <div>
                 <div class="d-flex col-md justify-content-center">
-                    <div class="card bg-light text-dark" style="width: 100rem;">
+                    <div class="card bg-light text-dark" style="width: 60rem;">
                         <div class="card-body text-center">
                             <form class="text-start" method='POST'>
                                 <h3 class="text-center">File Management</h3>
