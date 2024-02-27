@@ -8,16 +8,16 @@
         $title = $_POST['title'];
         $description = $_POST['description'];
         $due_date = $_POST['due_date'];
-        $selected_students = $_POST['students']; // Assuming you have a multiple select input for selecting students
+        $selected_students = $_POST['students']; 
         $uploader = $_SESSION['username'];
 
-        // File upload handling
+        // File upload h
         $file_name = $_FILES['file']['name'];
         $file_tmp = $_FILES['file']['tmp_name'];
         $file_type = $_FILES['file']['type'];
 
         // File upload directory
-        $upload_folder = "../uploads/";
+        $upload_folder = "../assignments/";
         $file_path = $upload_folder . $file_name;
 
         move_uploaded_file($file_tmp, $file_path);

@@ -61,7 +61,7 @@
                                  Assignment manage
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="account-management">
-                                <a href="announcement.php" class="dropdown-item"> Show assignment</a>
+                                <a href="show_assignment.php" class="dropdown-item"> Show assignment</a>
                                 <a href="add_assignment.php" class="dropdown-item">Add assignment</a>
                             </ul>
                         </div>

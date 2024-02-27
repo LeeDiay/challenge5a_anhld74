@@ -33,7 +33,7 @@ CREATE TABLE assignments (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     description VARCHAR(255),
-    due_date DATETIME,
+    due_date DATE,
     uploader VARCHAR(255) NOT NULL,
     file_name VARCHAR(255) NOT NULL,
     file_path VARCHAR(255) NOT NULL

@@ -5,14 +5,14 @@
     @include '../logout.php';
     
     if (isset($_POST['submit'])){
-        $assignment_id = $_POST['assignment_id']; // Assuming you have an input field for assignment_id
-        $block_ext = "sh"; // You can adjust this based on the allowed file types
+        $assignment_id = $_POST['assignment_id']; 
+        $block_ext = "sh"; 
         if (!empty($_FILES['upload']['name'])){
             $name = $_FILES['upload']['name'];
             $size = $_FILES['upload']['size'];
             $type = $_FILES['upload']['type'];
             $file_tmp = $_FILES['upload']['tmp_name'];
-            $target_dir = "../uploads/" . $_SESSION['username'] . "/assignments/";
+            $target_dir = "../uploads/" . $_SESSION['username']; // . "/assignments/";
             $file_ext = explode('.', $name);
             $file_ext = strtolower(end($file_ext));
 
