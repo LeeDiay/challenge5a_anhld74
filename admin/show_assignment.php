@@ -10,7 +10,7 @@
     <div class="container">
         <div>
             <div class="d-flex col-md justify-content-center">
-                <div class="card bg-light text-dark" style="width: 80rem;">
+                <div class="card bg-light text-dark" style="width: 90rem;">
                     <div class="card-body text-center">
                         <h3 class="text-center">Assignments List</h3>
                         <div class="mb-3">
@@ -46,7 +46,7 @@
                                             echo "<td>{$row['description']}</td>";
                                             echo "<td>{$row['due_date']}</td>";
                                             echo "<td>{$assigned_students_str}</td>";
-                                            echo "<td><a href='delete_assignment.php?id={$row['id']}'>Delete</a></td>"; // Provide link to delete assignment
+                                            echo "<td><a href='delete_assignment.php?id={$row['id']}' class='btn btn-danger'>Delete</a></td>"; // Apply CSS class to style the button
                                             echo "</tr>";
                                         }
                                     ?>
