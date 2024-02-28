@@ -39,7 +39,7 @@
         <div class="container">
             <div>
                 <div class="d-flex col-md justify-content-center">
-                    <div class="card bg-light text-dark" style="width: 50rem;">
+                    <div class="card bg-light text-dark" style="width: 30rem;">
                         <div class="card-body text-center">
                             <form class="text-start" method="post">
                                 <h3 class="text-center">Login</h3>
