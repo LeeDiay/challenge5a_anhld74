@@ -50,7 +50,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Access is denied!</h1>
+        <h1>Access denied!</h1>
         <p>You need log in to access this page.</p>
         <a href="login.php" class="btn">Login</a>
     </div>
