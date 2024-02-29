@@ -60,10 +60,10 @@
                                 <img src="./source/img/frog.png" alt="">
                             </div>
                             <h6 class="card-title mb-3">
-                                Đây là một cái card giới thiệu
+                                WEB QUẢN LÍ SINH VIÊN
                             </h6>
                             <p class="card-text">
-                                Web demo Week 2 + 3 VCS Training
+                                Demo Week 2 + 3 VCS Training
                             </p>
                         </div>
                     </div>
