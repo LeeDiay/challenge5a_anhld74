@@ -13,6 +13,20 @@ $info = mysqli_fetch_assoc($result);
 @include '../inc/user/header.php';
 ?>
 
+<style>
+    #successMessage {
+        display: none;
+        color: green;
+        border: 2px solid white;
+        background-color: white;
+        padding: 5px;
+        border-radius: 3px;
+        font-size: 14px;
+        width: fit-content;
+        margin: auto;
+    }
+</style>
+
 <section class="p-5">
     <div class="container">
         <div>
@@ -78,6 +92,8 @@ $info = mysqli_fetch_assoc($result);
                         <div class="text-center mt-3">
                             <button class="btn btn-primary float-end" id="editBtn">Edit</button>
                             <button class="btn btn-success float-end" id="saveBtn" style="display: none;">Save Changes</button>
+                            <button class="btn btn-danger float-start" id="cancelBtn" style="display: none;">Cancel</button>
+                            <div id="successMessage" style="display: none;">Information updated successfully!</div>
                         </div>
                     </div>
                 </div>
@@ -90,14 +106,27 @@ $info = mysqli_fetch_assoc($result);
     document.getElementById('editBtn').addEventListener('click', function() {
         document.getElementById('editBtn').style.display = 'none';
         document.getElementById('saveBtn').style.display = 'block';
+        document.getElementById('cancelBtn').style.display = 'block';
 
-        document.getElementById('name').style.display = 'none';
         document.getElementById('email').style.display = 'none';
         document.getElementById('phone').style.display = 'none';
 
-        document.getElementById('nameInput').style.display = 'block';
         document.getElementById('emailInput').style.display = 'block';
         document.getElementById('phoneInput').style.display = 'block';
+    });
+
+    document.getElementById('cancelBtn').addEventListener('click', function() {
+        document.getElementById('editBtn').style.display = 'block';
+        document.getElementById('saveBtn').style.display = 'none';
+        document.getElementById('cancelBtn').style.display = 'none';
+
+        document.getElementById('name').style.display = 'inline';
+        document.getElementById('email').style.display = 'inline';
+        document.getElementById('phone').style.display = 'inline';
+
+        document.getElementById('nameInput').style.display = 'none';
+        document.getElementById('emailInput').style.display = 'none';
+        document.getElementById('phoneInput').style.display = 'none';
     });
 
     document.getElementById('saveBtn').addEventListener('click', function() {
@@ -110,13 +139,17 @@ $info = mysqli_fetch_assoc($result);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.onreadystatechange = function() {
             if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-                alert('Information updated successfully!');
+                document.getElementById('successMessage').style.display = 'block';
+                setTimeout(function(){
+                    document.getElementById('successMessage').style.display = 'none';
+                }, 3000); // 3 giây
                 document.getElementById('name').textContent = name;
                 document.getElementById('email').textContent = email;
                 document.getElementById('phone').textContent = phone;
 
                 document.getElementById('editBtn').style.display = 'block';
                 document.getElementById('saveBtn').style.display = 'none';
+                document.getElementById('cancelBtn').style.display = 'none';
 
                 document.getElementById('name').style.display = 'inline';
                 document.getElementById('email').style.display = 'inline';
