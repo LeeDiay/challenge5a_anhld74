@@ -64,7 +64,7 @@
     <div class="container">
         <div>
             <div class="d-flex col-md justify-content-center">
-                <div class="card bg-light text-dark" style="width: 50rem;">
+                <div class="card bg-light text-dark" style="width: 40rem;">
                     <div class="card-body text-center">
                         <form class="text-start" method="POST" enctype="multipart/form-data">
                             <h3 class="text-center">Update Assignment</h3>

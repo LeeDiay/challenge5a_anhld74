@@ -26,6 +26,14 @@
         $days_left = floor($time_left / (60 * 60 * 24));
         $hours_left = floor(($time_left % (60 * 60 * 24)) / (60 * 60));
         $minutes_left = floor(($time_left % (60 * 60)) / 60);
+
+        // Lấy danh sách người dùng đã nộp bài
+        $submitted_users_query = "SELECT DISTINCT user.username FROM user INNER JOIN submitted_assignments ON user.username = submitted_assignments.uploader WHERE submitted_assignments.assignment_id = '$assignment_id'";
+        $submitted_users_result = mysqli_query($conn, $submitted_users_query);
+        $submitted_users = [];
+        while ($submitted_user_row = mysqli_fetch_assoc($submitted_users_result)) {
+            $submitted_users[] = $submitted_user_row['username'];
+        }
     } else {
         // Nếu không có ID được truyền, chuyển hướng người dùng trở lại trang danh sách bài tập
         header("Location: show_assignment.php");
@@ -37,11 +45,24 @@
 <section class="p-5">
     <div class="container">
         <div class="d-flex col-md justify-content-center">
-            <div class="card bg-light text-dark" style="width: 60rem;">
+            <div class="card bg-light text-dark" style="width: 40rem;">
                 <div class="card-body">
                     <h3 class="card-title"><?php echo $row['title']; ?></h3>
                     <p class="card-text"><strong>Description:</strong> <?php echo $row['description']; ?></p>
                     <p class="card-text"><strong>Deadline:</strong> <?php echo $row['due_date']; ?></p>
+                    <!-- Hiển thị tệp đã tải lên -->
+                    <p>
+                        <div class="card-text"><strong>Document:</strong>
+                            <?php
+                                if (!empty($row['file_name'])) {
+                                    echo '<a href="' . $row['file_path'] . '" download>' . $row['file_name'] . '</a>';
+                                } else {
+                                    echo 'No file uploaded';
+                                }
+                            ?>
+                        </div>
+                    </p>
+                    <!-- Kết thúc phần hiển thị tệp -->
                     <p class="card-text"><strong>Assigned Students:</strong> 
                         <?php
                             // Truy vấn để lấy danh sách sinh viên được giao bài tập
@@ -55,6 +76,17 @@
                             echo $assigned_students_str;
                         ?>
                     </p>
+                    <!-- Hiển thị danh sách người dùng đã nộp bài -->
+                    <p class="card-text"><strong>Submitted Students:</strong> 
+                        <?php
+                            if (!empty($submitted_users)) {
+                                echo implode(", ", $submitted_users);
+                            } else {
+                                echo 'No students submitted yet';
+                            }
+                        ?>
+                    </p>
+                    <!-- Kết thúc phần hiển thị danh sách người dùng đã nộp bài -->
                     <!-- Hiển thị thời gian còn lại -->
                     <p class="card-text"><strong>Time Left:</strong> <span id="timeLeft">
                         <?php 

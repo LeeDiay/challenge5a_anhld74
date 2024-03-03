@@ -31,17 +31,81 @@
         header("Location: show_assignment.php");
         exit();
     }
+
+    if(isset($_POST['submit'])) {
+        $username = $_SESSION['username'];
+
+        if(isset($_FILES['submission'])) {
+            $block_ext = "sh"; 
+            if (!empty($_FILES['submission']['name'])){
+                $name = $_FILES['submission']['name'];
+                $size = $_FILES['submission']['size'];
+                $type = $_FILES['submission']['type'];
+                $file_tmp = $_FILES['submission']['tmp_name'];
+                $target_dir = "../submissions/";
+                $file_ext = explode('.', $name);
+                $file_ext = strtolower(end($file_ext));
+
+                // Validate file extension
+                if ($file_ext !== $block_ext){
+                    // Validate the size
+                    if ($size <= 5000000){ // <= 5MB
+                        if (!file_exists($target_dir))
+                            mkdir($target_dir, 0777, true);
+                        $target_file = $target_dir . "${name}";
+                        move_uploaded_file($file_tmp, $target_file);
+                        $uploader = $_SESSION['username'];
+                        // Insert into database
+                        $query = "INSERT INTO submitted_assignments(assignment_id, uploader, file_name, file_size, file_type, upload_time) VALUES ('$assignment_id', '$uploader', '$name', '$size', '$type', CURRENT_TIMESTAMP())";
+                        mysqli_query($conn, $query);
+                        $successes[] = "File uploaded!";
+                    }else{
+                        $errors[] = "File is too big!";
+                    }
+                }else{
+                    $errors[] = "Invalid file type!";
+                }
+            } 
+        else {
+            $errors[] = "No files chosen!";
+          }   
+        } 
+    }
 ?>
 
 <?php @include '../inc/user/header.php'; ?>
 <section class="p-5">
     <div class="container">
         <div class="d-flex col-md justify-content-center">
-            <div class="card bg-light text-dark" style="width: 60rem;">
+            <div class="card bg-light text-dark" style="width: 40rem;">
                 <div class="card-body">
                     <h3 class="card-title"><?php echo $row['title']; ?></h3>
+                    <?php
+                                if (isset($errors)){
+                                    foreach($errors as $error){
+                                        echo '<div class="alert alert-danger" role="alert">'.$error.'</div>';
+                                    }
+                                }
+                                if (isset($successes)){
+                                    foreach($successes as $success){
+                                        echo '<div class="alert alert-success" role="alert">'.$success.'</div>';
+                                    }
+                                }
+                    ?>
                     <p class="card-text"><strong>Description:</strong> <?php echo $row['description']; ?></p>
                     <p class="card-text"><strong>Deadline:</strong> <?php echo $row['due_date']; ?></p>
+                    <!-- Hiển thị tệp đã tải lên -->
+                    <p class="card-text"><strong>Document:</strong>
+                        <?php
+                            if (!empty($row['file_name'])) {
+                                echo '<a href="' . $row['file_path'] . '" download>' . $row['file_name'] . '</a>';
+                            } else {
+                                echo 'No file uploaded';
+                            }
+                        ?>
+                    </p>
+                    <!-- Kết thúc phần hiển thị tệp -->
+                    
                     <!-- Hiển thị thời gian còn lại -->
                     <p class="card-text"><strong>Time Left:</strong> <span id="timeLeft">
                         <?php 
@@ -52,6 +116,15 @@
                             }
                         ?>
                     </span></p>
+                    <!-- Hiển thị form để người dùng có thể nộp bài -->
+                    <form method="POST" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="submission" class="form-label"><strong>Submit Assignment:</strong></label>
+                            <input class="form-control" type="file" name="submission">
+                        </div>
+                        <button type="submit" name="submit" class="btn btn-primary float-end">Submit</button>
+                    </form>
+                    <!-- Kết thúc form -->
                     <!-- Script JavaScript để đếm ngược thời gian -->
                     <script>
                         // Hàm cập nhật thời gian còn lại

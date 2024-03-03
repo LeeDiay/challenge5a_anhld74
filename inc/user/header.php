@@ -46,7 +46,7 @@
                     <li class="nav-item">
                         <a class="btn btn-dark" href="./show-user.php" role="button">My class</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <div class="dropdown">
                             <button 
                             class="btn btn-dark dropdown-toggle" 
@@ -57,13 +57,13 @@
                                  My assignment
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="account-management">
-                                <a href="show_assignment.php" class="dropdown-item"> Show assignment</a>
+                                <a href="show_assignment.php" class="dropdown-item">Show assignment</a>
                                 <a href="upload_assignment.php" class="dropdown-item">Upload assignment</a>
                             </ul>
                         </div>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
-                        <a class="btn btn-dark" href="./upload.php" role="button">File upload</a>
+                        <a class="btn btn-dark" href="show_assignment.php" role="button">Show assignment</a>
                     </li>
 
                     <li class="nav-item">

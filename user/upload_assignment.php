@@ -7,12 +7,12 @@
     if (isset($_POST['submit'])){
         $assignment_id = $_POST['assignment_id']; 
         $block_ext = "sh"; 
-        if (!empty($_FILES['upload']['name'])){
-            $name = $_FILES['upload']['name'];
-            $size = $_FILES['upload']['size'];
-            $type = $_FILES['upload']['type'];
-            $file_tmp = $_FILES['upload']['tmp_name'];
-            $target_dir = "../uploads/" . $_SESSION['username']; // . "/assignments/";
+        if (!empty($_FILES['submission']['name'])){
+            $name = $_FILES['submission']['name'];
+            $size = $_FILES['submission']['size'];
+            $type = $_FILES['submission']['type'];
+            $file_tmp = $_FILES['submission']['tmp_name'];
+            $target_dir = "../submissions/";
             $file_ext = explode('.', $name);
             $file_ext = strtolower(end($file_ext));
 
@@ -67,8 +67,8 @@
                                 <input class="form-control" type="text" name="assignment_id" required>
                             </div>
                             <div class="mb-3">
-                                <label for="formFile" class="form-label">Choose a file to upload:</label>
-                                <input class="form-control" type="file" name="upload" required>
+                                <label for="formFile" class="form-label">Choose a file to submission:</label>
+                                <input class="form-control" type="file" name="submission" required>
                             </div>
                             <div class="d-flex flex-row-reverse" style="margin-top: 1rem;">
                                 <button type="submit" name='submit' class="btn btn-primary">Submit</button>
