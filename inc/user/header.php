@@ -27,8 +27,21 @@
             </button>
             <div class="collapse navbar-collapse" id="navmenu">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="btn btn-dark" href="./info.php" role="button">My account</a>
+                <li class="nav-item">
+                        <div class="dropdown">
+                            <button 
+                            class="btn btn-dark dropdown-toggle" 
+                            type="button" id="profile" 
+                            data-bs-toggle="dropdown" 
+                            aria-haspopup="true" 
+                            aria-expanded="false">
+                                My account
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="profile">
+                                <a href="info.php" class="dropdown-item">Show info</a>
+                                <a href="update_passwd.php" class="dropdown-item">Change password</a>
+                            </ul>
+                        </div>
                     </li>
                     <li class="nav-item">
                         <a class="btn btn-dark" href="./show-user.php" role="button">My class</a>

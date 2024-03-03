@@ -11,7 +11,7 @@ if (!isset($_SESSION['username'])) {
 }
 
 // Lấy thông tin từ form gửi đi
-$name = $_POST['name'];
+//$name = $_POST['name'];
 $email = $_POST['email'];
 $phone = $_POST['phone'];
 
@@ -19,7 +19,7 @@ $phone = $_POST['phone'];
 $username = $_SESSION['username'];
 
 // Cập nhật thông tin trong cơ sở dữ liệu
-$update_query = "UPDATE user SET name = '$name', email = '$email', phone = '$phone' WHERE username = '$username'";
+$update_query = "UPDATE user SET email = '$email', phone = '$phone' WHERE username = '$username'";
 $result = mysqli_query($conn, $update_query);
 
 if ($result) {

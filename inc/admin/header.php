@@ -26,8 +26,24 @@
             </button>
             <div class="collapse navbar-collapse" id="navmenu">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="btn btn-dark" href="../admin/info.php" role="button">My account</a>
+                    </li> -->
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <button 
+                            class="btn btn-dark dropdown-toggle" 
+                            type="button" id="profile" 
+                            data-bs-toggle="dropdown" 
+                            aria-haspopup="true" 
+                            aria-expanded="false">
+                                My account
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="profile">
+                                <a href="info.php" class="dropdown-item">Show info</a>
+                                <a href="update_passwd.php" class="dropdown-item">Change password</a>
+                            </ul>
+                        </div>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown">
@@ -60,7 +76,7 @@
                             aria-expanded="false">
                                  Assignment manage
                             </button>
-                            <ul class="dropdown-menu" aria-labelledby="account-management">
+                            <ul class="dropdown-menu" aria-labelledby="assignment-management">
                                 <a href="show_assignment.php" class="dropdown-item"> Show assignment</a>
                                 <a href="add_assignment.php" class="dropdown-item">Add assignment</a>
                             </ul>
@@ -82,12 +98,6 @@
                             </ul>
                         </div>
                     </li>
-                    <!-- <li class="nav-item">
-                        <a class="btn btn-dark" href="add_announcement.php" role="button">Add announcement</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-dark" href="announcement.php" role="button">Announcement</a>
-                    </li> -->
                     <li class="nav-item">
                         <form class="text-start" method='POST'>
                             <button type="submit" name="logout" class="btn btn-primary">Log out</button>
