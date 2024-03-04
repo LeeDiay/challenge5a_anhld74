@@ -51,7 +51,7 @@
                     <!-- Kết thúc phần hiển thị tệp -->
                     <!-- Hiển thị danh sách người dùng đã nộp bài -->
                     <!-- <h3>Submitted Students:</h3> -->
-                    <p class="card-text"><strong>Submitted Students:</strong></p>
+                    <p class="card-text"><strong>Download Assignments:</strong></p>
                     <ul>
                         <?php
                             if (!empty($submitted_users)) {
