@@ -72,7 +72,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="file" class="form-label">Upload File:</label>
-                                <input class="form-control" type="file" name="file" required>
+                                <input class="form-control" type="file" name="file">
                             </div>
                             <div class="mb-3">
                                 <input class="form-check-input" type="checkbox" id="select-all">
