@@ -4,11 +4,9 @@
     @include './check_admin.php';
     @include '../logout.php';
 
-    // Kiểm tra xem ID của bài tập đã được truyền qua URL hay không
     if(isset($_GET['id'])) {
         $assignment_id = $_GET['id'];
 
-        // Truy vấn để lấy thông tin chi tiết về bài tập
         $query = "SELECT * FROM assignments WHERE id = '$assignment_id'";
         $result = mysqli_query($conn, $query);
         $row = mysqli_fetch_assoc($result);
@@ -21,7 +19,6 @@
             $submitted_users[] = $submitted_user_row;
         }
     } else {
-        // Nếu không có ID được truyền, chuyển hướng người dùng trở lại trang danh sách bài tập
         header("Location: show_assignment.php");
         exit();
     }
@@ -36,7 +33,6 @@
                     <h3 class="card-title"><?php echo $row['title']; ?></h3>
                     <p class="card-text"><strong>Description:</strong> <?php echo $row['description']; ?></p>
                     <p class="card-text"><strong>Deadline:</strong> <?php echo $row['due_date']; ?></p>
-                    <!-- Hiển thị tệp đã tải lên -->
                     <p>
                         <div class="card-text"><strong>Document:</strong>
                             <?php
@@ -48,10 +44,8 @@
                             ?>
                         </div>
                     </p>
-                    <!-- Kết thúc phần hiển thị tệp -->
-                    <!-- Hiển thị danh sách người dùng đã nộp bài -->
-                    <!-- <h3>Submitted Students:</h3> -->
                     <p class="card-text"><strong>Download Assignments:</strong></p>
+
                     <ul>
                         <?php
                             if (!empty($submitted_users)) {
@@ -63,7 +57,7 @@
                             }
                         ?>
                     </ul>
-                    <!-- Kết thúc phần hiển thị danh sách người dùng đã nộp bài -->
+                    
                     <div class="d-flex justify-content-between">
                         <a href="assignment_page.php?id=<?php echo $assignment_id; ?>" class="btn btn-secondary">Back</a>
                     </div>

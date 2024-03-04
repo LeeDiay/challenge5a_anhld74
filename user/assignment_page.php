@@ -7,14 +7,17 @@ session_start();
 if(isset($_GET['id'])) {
     $assignment_id = $_GET['id'];
 
+    // Truy vấn để lấy thông tin chi tiết về bài tập
     $query = "SELECT * FROM assignments WHERE id = '$assignment_id'";
     $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_assoc($result);
 
+    // Tính toán thời gian còn lại
     $due_date = strtotime($row['due_date']);
     $current_time = time();
     $time_left = $due_date - $current_time;
 
+    // Nếu thời gian còn lại âm, hiển thị thông báo đã hết thời gian và không cho phép upload
     if ($time_left <= 0) {
         $time_left = 0;
         $upload_disabled = true;
@@ -26,11 +29,19 @@ if(isset($_GET['id'])) {
     $hours_left = floor(($time_left % (60 * 60 * 24)) / (60 * 60));
     $minutes_left = floor(($time_left % (60 * 60)) / 60);
 
+    // Kiểm tra xem người dùng đã nộp bài chưa
     $username = $_SESSION['username'];
     $query_check_submission = "SELECT * FROM submitted_assignments WHERE assignment_id = '$assignment_id' AND uploader = '$username'";
     $result_check_submission = mysqli_query($conn, $query_check_submission);
     $has_submitted = mysqli_num_rows($result_check_submission) > 0;
+
+    // Nếu người dùng đã nộp bài, lấy thông tin bài đã nộp
+    $submitted_assignment_info = null;
+    if ($has_submitted) {
+        $submitted_assignment_info = mysqli_fetch_assoc($result_check_submission);
+    }
 } else {
+    // Nếu không có ID được truyền, chuyển hướng người dùng trở lại trang danh sách bài tập
     header("Location: show_assignment.php");
     exit();
 }
@@ -47,13 +58,16 @@ if(isset($_POST['submit']) && !$upload_disabled && !$has_submitted) {
             $file_ext = explode('.', $name);
             $file_ext = strtolower(end($file_ext));
 
+            // Validate file extension
             if ($file_ext !== $block_ext){
+                // Validate the size
                 if ($size <= 5000000){ // <= 5MB
                     if (!file_exists($target_dir))
                         mkdir($target_dir, 0777, true);
                     $target_file = $target_dir . "${name}";
                     move_uploaded_file($file_tmp, $target_file);
                     $uploader = $_SESSION['username'];
+                    // Insert into database
                     $query = "INSERT INTO submitted_assignments(assignment_id, uploader, file_name, file_size, file_type, upload_time) VALUES ('$assignment_id', '$uploader', '$name', '$size', '$type', CURRENT_TIMESTAMP())";
                     mysqli_query($conn, $query);
                     $successes[] = "File uploaded!";
@@ -119,7 +133,9 @@ if(isset($_POST['submit']) && !$upload_disabled && !$has_submitted) {
                             <button type="submit" name="submit" class="btn btn-primary float-end">Submit</button>
                         </form>
                     <?php elseif ($has_submitted): ?>
-                        <p class="text-danger">You have already submitted this assignment.</p>
+                        <p class="text-success">You have already submitted this assignment!!!</p>
+                        <p><strong>Submitted File:</strong> <a href="../submissions/<?php echo $submitted_assignment_info['file_name']; ?>" download><?php echo $submitted_assignment_info['file_name']; ?></a></p>
+                        <p><strong>Submitted Time:</strong> <?php echo $submitted_assignment_info['upload_time']; ?></p>
                     <?php endif; ?>
 
                     <a href="show_assignment.php" class="btn btn-secondary">Back</a>
@@ -155,6 +171,7 @@ if(isset($_POST['submit']) && !$upload_disabled && !$has_submitted) {
                                 timeLeftSpan.textContent = "Time's up!";
                             }
                         }
+
                         var timer = setInterval(updateTime, 60000);
                     </script>
                 </div>
