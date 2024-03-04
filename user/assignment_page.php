@@ -125,6 +125,7 @@
                         <button type="submit" name="submit" class="btn btn-primary float-end">Submit</button>
                     </form>
                     <!-- Kết thúc form -->
+                    <a href="show_assignment.php" class="btn btn-secondary">Back</a>
                     <!-- Script JavaScript để đếm ngược thời gian -->
                     <script>
                         // Hàm cập nhật thời gian còn lại

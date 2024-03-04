@@ -91,7 +91,7 @@ $info = mysqli_fetch_assoc($result);
                         </div>
                         <div class="text-center mt-3">
                             <button class="btn btn-primary float-end" id="editBtn">Edit</button>
-                            <button class="btn btn-success float-end" id="saveBtn" style="display: none;">Save Changes</button>
+                            <button class="btn btn-success float-end" id="saveBtn" style="display: none;">Save</button>
                             <button class="btn btn-danger float-start" id="cancelBtn" style="display: none;">Cancel</button>
                             <div id="successMessage" style="display: none;">Information updated successfully!</div>
                         </div>
