@@ -5,13 +5,15 @@
     @include '../logout.php';
     if (isset($_POST['submit'])){
         $username = mysqli_real_escape_string($conn, $_POST['username']);
-        // $_SESSION['delete_user'] = $username;
         $select = "SELECT * FROM user WHERE username = '$username'";
         $result = mysqli_query($conn, $select); 
         if(mysqli_num_rows($result) == 0){
             $error[] = 'This username doesn\'t exist!';
         }else{
-            $select = "SELECT user.username, upload.name, upload.upload_time, upload.id, upload.size FROM user INNER JOIN upload ON user.username = upload.uploader WHERE user.username = '$username' ORDER BY upload.upload_time ASC;";
+            $select = "SELECT user.username, submitted_assignments.uploader, submitted_assignments.upload_time, submitted_assignments.assignment_id, submitted_assignments.file_size, submitted_assignments.file_name 
+                       FROM user 
+                       INNER JOIN submitted_assignments ON user.username = submitted_assignments.uploader 
+                       WHERE user.username = '$username' ORDER BY submitted_assignments.upload_time ASC;";
             $result = mysqli_query($conn, $select); 
             if(mysqli_num_rows($result) == 0){
                 $error[] = "This username hasn't uploaded any file!";
@@ -53,22 +55,22 @@
                                 </div>
 
                                 <?php if (isset($files)): ?>
-                                    <div style="margin-bottom: 1rem";>Available files of user '<?php echo $_SESSION['username'] ?>':</div>
+                                    <div style="margin-bottom: 1rem";>Available files of user '<strong><?php echo $username; ?></strong>':</div>
                                     <?php foreach($files as $file): ?>
                                         <div class="d-flex justify-content-between align-items-center" style="margin-bottom:1rem;">
                                             <div>
-                                                <?php echo $file['name'] . ' - ' . $file['size'] . ' KB - '. $file['upload_time'];?>
+                                                <?php echo $file['file_name'] . ' - ' . $file['file_size'] . ' KB - '. $file['upload_time'];?>
                                             </div>
                                             <div>
                                                 <form class="text-start" method='POST'>
-                                                    <button type="submit" name="<?php echo $file['id'];?>" class="btn btn-primary">Download</button>
-                                                    <button type="submit" name="<?php echo $file['id'];?>" class="btn btn-danger">Delete</button>
+                                                    <button type="submit" name="<?php echo $file['assignment_id'];?>" class="btn btn-primary">Download</button>
+                                                    <button type="submit" name="<?php echo $file['assignment_id'];?>" class="btn btn-danger">Delete</button>
                                                 </form>
                                             </div>
                                         </div>
                                         <?php
-                                            if (isset($_POST[$file['id']])){
-                                                $name = $file['name'];
+                                            if (isset($_POST[$file['assignment_id']])){
+                                                $name = $file['file_name'];
                                                 $query = "DELETE FROM upload WHERE name='$name';";
                                                 mysqli_query($conn, $query);
                                                 $success[] = 'Delete successfully!';

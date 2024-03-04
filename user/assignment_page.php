@@ -4,7 +4,6 @@ session_start();
 @include './check_user.php';
 @include '../logout.php';
 
-// Kiểm tra xem ID của bài tập đã được truyền qua URL hay không
 if(isset($_GET['id'])) {
     $assignment_id = $_GET['id'];
 
@@ -97,7 +96,6 @@ if(isset($_POST['submit']) && !$upload_disabled) {
                     ?>
                     <p class="card-text"><strong>Description:</strong> <?php echo $row['description']; ?></p>
                     <p class="card-text"><strong>Deadline:</strong> <?php echo $row['due_date']; ?></p>
-                    <!-- Hiển thị tệp đã tải lên -->
                     <p class="card-text"><strong>Document:</strong>
                         <?php
                             if (!empty($row['file_name'])) {
@@ -107,9 +105,6 @@ if(isset($_POST['submit']) && !$upload_disabled) {
                             }
                         ?>
                     </p>
-                    <!-- Kết thúc phần hiển thị tệp -->
-                    
-                    <!-- Hiển thị thời gian còn lại -->
                     <p class="card-text"><strong>Time Left:</strong> <span id="timeLeft">
                         <?php 
                             if ($time_left > 0) {
@@ -119,7 +114,7 @@ if(isset($_POST['submit']) && !$upload_disabled) {
                             }
                         ?>
                     </span></p>
-                    <!-- Hiển thị form để người dùng có thể nộp bài (nếu thời gian còn lại) -->
+
                     <?php if(!$upload_disabled): ?>
                         <form method="POST" enctype="multipart/form-data">
                             <div class="mb-3">
@@ -129,18 +124,16 @@ if(isset($_POST['submit']) && !$upload_disabled) {
                             <button type="submit" name="submit" class="btn btn-primary float-end">Submit</button>
                         </form>
                     <?php endif; ?>
-                    <!-- Kết thúc form -->
+
                     <a href="show_assignment.php" class="btn btn-secondary">Back</a>
-                    <!-- Script JavaScript để đếm ngược thời gian -->
+                    <!--đếm ngược thời gian -->
                     <script>
-                        // Hàm cập nhật thời gian còn lại
                         function updateTime() {
                             var timeLeftSpan = document.getElementById("timeLeft");
                             var daysLeft = <?php echo $days_left; ?>;
                             var hoursLeft = <?php echo $hours_left; ?>;
                             var minutesLeft = <?php echo $minutes_left; ?>;
 
-                            // Giảm thời gian còn lại
                             if (minutesLeft > 0) {
                                 minutesLeft--;
                             } else {
@@ -153,14 +146,12 @@ if(isset($_POST['submit']) && !$upload_disabled) {
                                         hoursLeft = 23;
                                         minutesLeft = 59;
                                     } else {
-                                        // Nếu hết thời gian, dừng đếm ngược
                                         clearInterval(timer);
                                         timeLeftSpan.textContent = "Time's up!";
                                     }
                                 }
                             }
 
-                            // Cập nhật nội dung thẻ span
                             if (daysLeft >= 0 || hoursLeft >= 0 || minutesLeft >= 0) {
                                 timeLeftSpan.textContent = daysLeft + " days, " + hoursLeft + " hours, " + minutesLeft + " minutes";
                             } else {
@@ -168,7 +159,6 @@ if(isset($_POST['submit']) && !$upload_disabled) {
                             }
                         }
 
-                        // Gọi hàm updateTime mỗi phút
                         var timer = setInterval(updateTime, 60000);
                     </script>
                 </div>
