@@ -10,10 +10,11 @@
         if(mysqli_num_rows($result) == 0){
             $error[] = 'This username doesn\'t exist!';
         }else{
-            $select = "SELECT user.username, submitted_assignments.uploader, submitted_assignments.upload_time, submitted_assignments.assignment_id, submitted_assignments.file_size, submitted_assignments.file_name 
+            $select = "SELECT user.username, submitted_assignments.*
                        FROM user 
                        INNER JOIN submitted_assignments ON user.username = submitted_assignments.uploader 
-                       WHERE user.username = '$username' ORDER BY submitted_assignments.upload_time ASC;";
+                       WHERE user.username = '$username' 
+                       ORDER BY submitted_assignments.upload_time ASC;";
             $result = mysqli_query($conn, $select); 
             if(mysqli_num_rows($result) == 0){
                 $error[] = "This username hasn't uploaded any file!";
@@ -59,23 +60,11 @@
                                     <?php foreach($files as $file): ?>
                                         <div class="d-flex justify-content-between align-items-center" style="margin-bottom:1rem;">
                                             <div>
-                                                <?php echo $file['file_name'] . ' - ' . $file['file_size'] . ' KB - '. $file['upload_time'];?>
-                                            </div>
-                                            <div>
-                                                <form class="text-start" method='POST'>
-                                                    <button type="submit" name="<?php echo $file['assignment_id'];?>" class="btn btn-primary">Download</button>
-                                                    <button type="submit" name="<?php echo $file['assignment_id'];?>" class="btn btn-danger">Delete</button>
-                                                </form>
+                                                <?php 
+                                                    echo '<a href="../submissions/' . $file['file_name'] . '" download>' . $file['file_name']  . '</a>'.' - ' . $file['file_size'] . ' KB - '. $file['upload_time'];
+                                                ?>
                                             </div>
                                         </div>
-                                        <?php
-                                            if (isset($_POST[$file['assignment_id']])){
-                                                $name = $file['file_name'];
-                                                $query = "DELETE FROM upload WHERE name='$name';";
-                                                mysqli_query($conn, $query);
-                                                $success[] = 'Delete successfully!';
-                                            }
-                                        ?>
                                     <?php endforeach; ?>
                                 <?php endif; ?>
                             </form>
