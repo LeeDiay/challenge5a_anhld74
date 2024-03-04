@@ -96,12 +96,16 @@
                                 echo "Time's up!";
                             }
                         ?>
-                    </span></p>
+                        </span>
+                    </p>
+                    
+
                     <div class="d-flex justify-content-between">
                         <a href="show_assignment.php" class="btn btn-secondary">Back</a>
+                        <a href="view_submitted.php?id=<?php echo $assignment_id; ?>" class="btn btn-primary">View Submitted</a>
                         <div>
-                            <a href="update_assignment.php?id=<?php echo $assignment_id; ?>" class="btn btn-primary">Update</a>
                             <a href="delete_assignment.php?id=<?php echo $assignment_id; ?>" class="btn btn-danger">Delete</a>
+                            <a href="update_assignment.php?id=<?php echo $assignment_id; ?>" class="btn btn-primary">Update</a>
                         </div>
                     </div>
                     <!-- Script JavaScript để đếm ngược thời gian -->
