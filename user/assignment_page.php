@@ -133,7 +133,7 @@ if(isset($_POST['submit']) && !$upload_disabled && !$has_submitted) {
                             <button type="submit" name="submit" class="btn btn-primary float-end">Submit</button>
                         </form>
                     <?php elseif ($has_submitted): ?>
-                        <p class="text-success">You have already submitted this assignment!!!</p>
+                        <p class="text-success"><strong>You have already submitted this assignment!!!</strong></p>
                         <p><strong>Submitted File:</strong> <a href="../submissions/<?php echo $submitted_assignment_info['file_name']; ?>" download><?php echo $submitted_assignment_info['file_name']; ?></a></p>
                         <p><strong>Submitted Time:</strong> <?php echo $submitted_assignment_info['upload_time']; ?></p>
                     <?php endif; ?>
