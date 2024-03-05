@@ -50,7 +50,7 @@
                         <?php
                             if (!empty($submitted_users)) {
                                 foreach ($submitted_users as $submitted_user) {
-                                    echo '<li><a href="../submissions/' . $submitted_user['file_name'] . '" download>' . $submitted_user['username'] . ' - ' . $submitted_user['file_name'] . '</a></li>';
+                                     echo '<li>User: '. $submitted_user['username'] . ' - File submitted: ' . '<a href="../submissions/' . $submitted_user['file_name'] . '" download>' . $submitted_user['file_name'] .'</a></li>';
                                 }
                             } else {
                                 echo '<li>No students submitted yet</li>';
