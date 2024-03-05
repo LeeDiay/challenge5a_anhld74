@@ -19,13 +19,12 @@
                 $error[] = 'This username has already been used!';
             }
             else{
-                $error[] = 'This email has already already been registered!';
+                $error[] = 'This email has already been registered!';
             }
         }else{
             if ($pass != $cpass){
                 $error[] = "Password doesn't match!";
-            } else {
-                // Upload ảnh avatar
+            }else {
                 if(isset($_FILES['avatar'])){
                     $file_name = $_FILES['avatar']['name'];
                     $file_tmp = $_FILES['avatar']['tmp_name'];
@@ -46,8 +45,7 @@
                     }
                 }
 
-                // Thêm thông tin người dùng vào cơ sở dữ liệu
-                $insert = "INSERT INTO user (username, name, email, phone, password, type, avatar) VALUES ('$username','$name', '$email' , '$phone', '$pass','$type', '$avatar_path')";
+                $insert = "INSERT INTO user (username, name, email, phone, password, type, avatar) VALUES ('$username','$name', '$email', '$phone', '$pass', '$type', '$avatar_path')";
                 mysqli_query($conn, $insert);
                 $success[] = "Successfully registered!";
             }
