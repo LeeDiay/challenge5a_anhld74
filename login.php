@@ -56,7 +56,7 @@
                                     <input type="text" name="username" class="form-control" id="username">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="password" class="form-label">Enter password</label>
+                                    <label for="password" class="form-label">Enter password:</label>
                                     <input type="password" name="password" class="form-control" id="password">
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center">
