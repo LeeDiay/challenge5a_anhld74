@@ -61,7 +61,8 @@ CREATE TABLE challenges (
     uploader VARCHAR(255) NOT NULL, 
     file_name VARCHAR(255) NOT NULL,
     file_path VARCHAR(255) NOT NULL,
-    answer VARCHAR(255) NOT NULL
+    answer VARCHAR(255) NOT NULL,
+    content TEXT
 )
 
 -- hai tài khoản giáo viên và hai tài khoản sinh viên 
