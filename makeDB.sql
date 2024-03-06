@@ -54,6 +54,16 @@ CREATE TABLE submitted_assignments (
     upload_time DATETIME
 );
 
+CREATE TABLE challenges (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    challenge_name VARCHAR(255) NOT NULL,
+    hint VARCHAR(255), 
+    uploader VARCHAR(255) NOT NULL, 
+    file_name VARCHAR(255) NOT NULL,
+    file_path VARCHAR(255) NOT NULL,
+    answer VARCHAR(255) NOT NULL
+)
+
 -- hai tài khoản giáo viên và hai tài khoản sinh viên 
 -- tài khoản giáo viên: teacher1 / 123456a@A ; teacher2 / 123456a@A
 -- tài khoản sinh viên: student1 / 123456a@A ; student2 / 123456a@A).

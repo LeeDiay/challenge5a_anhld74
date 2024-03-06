@@ -64,7 +64,20 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-dark" href="../admin/file_management.php" role="button">File manage</a>
+                        <div class="dropdown">
+                            <button 
+                            class="btn btn-dark dropdown-toggle" 
+                            type="button" id="account-management" 
+                            data-bs-toggle="dropdown" 
+                            aria-haspopup="true" 
+                            aria-expanded="false">
+                                Challenge manage
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="account-management">
+                                <a href="show_challenge.php" class="dropdown-item">Show challenge</a>
+                                <a href="add_challenge.php" class="dropdown-item">Add challenge</a>
+                            </ul>
+                        </div>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown">
@@ -79,6 +92,7 @@
                             <ul class="dropdown-menu" aria-labelledby="assignment-management">
                                 <a href="show_assignment.php" class="dropdown-item"> Show assignment</a>
                                 <a href="add_assignment.php" class="dropdown-item">Add assignment</a>
+                                <a href="file_management.php" class="dropdown-item">File manage</a>
                             </ul>
                         </div>
                     </li>
