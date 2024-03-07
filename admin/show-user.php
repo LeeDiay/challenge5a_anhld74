@@ -76,7 +76,9 @@ session_start();
                             <p></p>
                             <div class="d-flex justify-content-end">
                                 <div class="text-end" style="min-width: 10rem;">
-                                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#messageModal_<?php echo $user['id']; ?>">Give a message</button>
+                                    <!-- <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#messageModal_<?php echo $user['id']; ?>">Give a message</button> -->
+                                    <button class="btn btn-primary btn-give-message" data-bs-toggle="modal" data-bs-target="#messageModal_<?php echo $user['id']; ?>">Give a message</button>
+
                                 </div>
                             </div>
                             <div class="modal fade" id="messageModal_<?php echo $user['id']; ?>" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
@@ -110,28 +112,44 @@ session_start();
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        document.querySelectorAll("form").forEach(form => {
-            form.addEventListener("submit", function(event) {
-                event.preventDefault();
-                const formData = new FormData(this);
-                fetch(this.action, {
-                    method: this.method,
-                    body: formData
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        alert("Send message successfully!");
-                    } 
-                    else {
-                        alert(data.message || "Can't send your message!");
+        document.querySelectorAll(".btn-give-message").forEach(button => {
+            button.addEventListener("click", function() {
+                const modalId = this.getAttribute("data-bs-target");
+                const modal = document.querySelector(modalId);
+                if (modal) {
+                    const form = modal.querySelector("form");
+                    if (form) {
+                        form.addEventListener("submit", function(event) {
+                            event.preventDefault();
+                            const formData = new FormData(this);
+                            fetch(this.action, {
+                                method: this.method,
+                                body: formData
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.success) {
+                                    alert("Send message successfully!");
+                                    // Close modal after sending message
+                                    const modal = document.querySelector(modalId);
+                                    if (modal) {
+                                        const modalBS = bootstrap.Modal.getInstance(modal);
+                                        modalBS.hide();
+                                    }
+                                } 
+                                else {
+                                    alert(data.message || "Can't send your message!");
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
+                                alert("Can't send your message!");
+                            });
+                        });
                     }
-                })
-                .catch(error => {
-                    // console.error('Error:', error);
-                    // alert("Can't send your message!");
-                });
+                }
             });
         });
     });
 </script>
+

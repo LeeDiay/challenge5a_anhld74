@@ -40,7 +40,7 @@
                                 My account
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="profile">
-                                <a href="info.php" class="dropdown-item">Show info</a>
+                                <a href="info.php" class="dropdown-item">My information</a>
                                 <a href="update_passwd.php" class="dropdown-item">Change password</a>
                             </ul>
                         </div>

@@ -1,19 +1,17 @@
 <?php
-    session_start();
-    @include '../inc/config.php';
-    @include './check_user.php';
-    @include '../logout.php';
-   
-    // Lấy tất cả người dùng từ cơ sở dữ liệu
-    $select = "SELECT * FROM user WHERE type = 'user' ";
-    $result = mysqli_query($conn, $select);
-    $users = mysqli_fetch_all($result, MYSQLI_ASSOC);
+session_start();
+@include '../inc/config.php';
+@include './check_user.php';
+@include '../logout.php';
+
+  $select = "SELECT * FROM user";
+  $result = mysqli_query($conn, $select);
+  $users = mysqli_fetch_all($result, MYSQLI_ASSOC);
 ?>
 
 <?php
-    @include '../inc/user/header.php';
+@include '../inc/user/header.php';
 ?>
-
 
 <section class="p-5">
     <div class="container">
@@ -21,9 +19,9 @@
             <div class="d-flex col-md justify-content-center mb-4">
                 <div class="card bg-dark text-light" style="min-width: 45rem;">
                     <div class="card-body d-flex align-items-center">
-                    <div class="avatar" style="flex: 0 0 100px; margin-right: 40px;">
-                        <img src="<?php echo '../avatar_user/' . $user['avatar']; ?>" alt="Avatar" style="width: 100px; height: 100px; border-radius: 40%;">
-                    </div>
+                        <div class="avatar" style="flex: 0 0 100px; margin-right: 40px;">
+                            <img src="<?php echo '../avatar_user/' . $user['avatar']; ?>" alt="Avatar" style="width: 150px; height: 150px; border-radius: 40%;">
+                        </div>
                         <div class="user-info flex-grow-1">
                             <div class="d-flex justify-content-around">
                                 <div class="text-end" style="min-width: 10rem;">
@@ -75,6 +73,34 @@
                                     <?php echo $user['type']; ?>
                                 </div>
                             </div>
+                            <p></p>
+                            <div class="d-flex justify-content-end">
+                                <div class="text-end" style="min-width: 10rem;">
+                                    <!-- <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#messageModal_<?php echo $user['id']; ?>">Give a message</button> -->
+                                    <button class="btn btn-primary btn-give-message" data-bs-toggle="modal" data-bs-target="#messageModal_<?php echo $user['id']; ?>">Give a message</button>
+
+                                </div>
+                            </div>
+                            <div class="modal fade" id="messageModal_<?php echo $user['id']; ?>" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="messageModalLabel"><strong style="color: black;">Give a message for <?php echo $user['username']; ?></strong></h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form id="messageForm_<?php echo $user['id']; ?>" action="process_message.php" method="POST">
+                                                <input type="hidden" name="recipient_id" value="<?php echo $user['id']; ?>">
+                                                <textarea class="form-control" name="message" rows="3" placeholder="Write your message here"></textarea>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary">Send message</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -83,3 +109,47 @@
     </div>
 </section>
 <?php @include '../inc/footer.php'; ?>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelectorAll(".btn-give-message").forEach(button => {
+            button.addEventListener("click", function() {
+                const modalId = this.getAttribute("data-bs-target");
+                const modal = document.querySelector(modalId);
+                if (modal) {
+                    const form = modal.querySelector("form");
+                    if (form) {
+                        form.addEventListener("submit", function(event) {
+                            event.preventDefault();
+                            const formData = new FormData(this);
+                            fetch(this.action, {
+                                method: this.method,
+                                body: formData
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.success) {
+                                    alert("Send message successfully!");
+                                    // Close modal after sending message
+                                    const modal = document.querySelector(modalId);
+                                    if (modal) {
+                                        const modalBS = bootstrap.Modal.getInstance(modal);
+                                        modalBS.hide();
+                                    }
+                                } 
+                                else {
+                                    alert(data.message || "Can't send your message!");
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
+                                alert("Can't send your message!");
+                            });
+                        });
+                    }
+                }
+            });
+        });
+    });
+</script>
+

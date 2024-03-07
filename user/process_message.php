@@ -1,7 +1,7 @@
 <?php
 session_start();
 @include '../inc/config.php';
-@include './check_admin.php';
+@include './check_user.php';
 @include '../logout.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
