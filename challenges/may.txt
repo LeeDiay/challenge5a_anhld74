@@ -1,0 +1,5 @@
+1 pfsen: 2 card mang, 192.168.100.1, 10.10.19.1
+1 kali, 2 card mang, eth0, 192.168.100.3, eth1: 10.10.19.148
+1 wwinserver 1 card mang, 192.168.100.201, 10.10.19.202
+1 ubuntu 1 card mang, 192.168.100.147
+note: kali ubun tair đầy đủ ssh, nmap, net-tools, 

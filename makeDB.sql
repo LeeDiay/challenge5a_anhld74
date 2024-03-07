@@ -65,6 +65,16 @@ CREATE TABLE challenges (
     content TEXT
 )
 
+CREATE TABLE messages (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    sender_id INT,
+    receiver_id INT,
+    message TEXT,
+    sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (sender_id) REFERENCES user(id),
+    FOREIGN KEY (receiver_id) REFERENCES user(id)
+);
+
 -- hai tài khoản giáo viên và hai tài khoản sinh viên 
 -- tài khoản giáo viên: teacher1 / 123456a@A ; teacher2 / 123456a@A
 -- tài khoản sinh viên: student1 / 123456a@A ; student2 / 123456a@A).
