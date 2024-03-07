@@ -22,7 +22,31 @@
         $nphone = mysqli_real_escape_string($conn, $_POST['nphone']);
         $npass = md5($_POST['npassword']);
         $ntype = $_POST['ntype'];
-        $query = "UPDATE user SET username='$nusername', name='$nname', email='$nemail', phone = '$nphone', password='$npass', type= '$ntype' WHERE username='$update_user'";
+        $avatar_path = ''; 
+        if(isset($_FILES['navatar']) && $_FILES['navatar']['size'] > 0){
+            $file_name = $_FILES['navatar']['name'];
+            $file_tmp = $_FILES['navatar']['tmp_name'];
+            $file_type = $_FILES['navatar']['type'];
+            $file_size = $_FILES['navatar']['size'];
+            $file_error = $_FILES['navatar']['error'];
+
+            if($file_error === 0){
+                if($file_size > 5242880){ // 5MB
+                    $error[] = 'File size must be less than 5 MB';
+                } else {
+                    $file_destination = '../avatar_user/' . $file_name;
+                    move_uploaded_file($file_tmp, $file_destination);
+                    $avatar_path = $file_name;
+                }
+            } else {
+                $error[] = 'Error uploading file';
+            }
+        }
+        $query = "UPDATE user SET username='$nusername', name='$nname', email='$nemail', phone = '$nphone', password='$npass', type= '$ntype'";
+        if(!empty($avatar_path)){
+            $query .= ", avatar = '$avatar_path'";
+        }
+        $query .= " WHERE username='$update_user'";
         mysqli_query($conn, $query);
         unset($update_user);
         $success[] = 'Update successfully';
@@ -36,7 +60,7 @@
                 <div class="d-flex col-md justify-content-center">
                     <div class="card bg-light text-dark" style="width: 50rem;">
                         <div class="card-body text-center">
-                            <form class="text-start" method='POST'>
+                            <form class="text-start" method='POST' enctype="multipart/form-data">
                                 <h3 class="text-center">Update user</h3>
                                 <?php
                                     if (isset($error)){
@@ -66,7 +90,7 @@
                                             echo '<div style="margin-top: 1rem;">Update information:</div>';
                                         ?> 
                                         <div class="d-flex flex-column col-md justify-content-center" style="margin-top: 1rem;">
-                                            <form class="text-start" method='POST'>                                
+                                            <form class="text-start" method='POST' enctype="multipart/form-data">                                
                                                 <div class="mb-3">
                                                     <label for="username" class="form-label">Enter new username:</label>
                                                     <input type="text" name='nusername' class="form-control" id="username" value="<?php echo $user[0]['username']; ?>" required>
@@ -86,6 +110,10 @@
                                                 <div class="mb-3">
                                                     <label for="password" class="form-label">Enter new password:</label>
                                                     <input type="password" name='npassword' class="form-control" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="avatar" class="form-label">Choose Avatar:</label>
+                                                    <input type="file" name="navatar" accept="image/*" class="form-control" id="avatar">
                                                 </div>
                                                 <label for="utype" class="form-label">Select user type:</label>
                                                     <select class="form-select" name='ntype'>

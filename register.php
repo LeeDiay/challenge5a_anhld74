@@ -7,7 +7,7 @@
         $phone = mysqli_real_escape_string($conn, $_POST['phone']);
         $pass = md5($_POST['password']);    
         $cpass = md5($_POST['cpassword']);
-        $type = $_POST['type'];
+        $type = "user";
 
         $select = "SELECT * FROM user WHERE username = '$username' OR email = '$email'";
         $result = mysqli_query($conn, $select); 
@@ -112,11 +112,11 @@
                                     <label for="avatar" class="form-label">Choose Avatar:</label>
                                     <input type="file" name="avatar" accept="image/*" class="form-control" id="avatar">
                                 </div>
-                                <label for="utype" class="form-label">Select user type:</label>
-                                <select class="form-select" name='type'>
+                                <!-- <label for="utype" class="form-label">Select user type:</label> -->
+                                <!-- <select class="form-select" name='type'>
                                     <option value="user">User</option>
                                     <option value="admin">Admin</option>
-                                </select>
+                                </select> -->
                                 <div class="d-flex justify-content-between align-items-center" style="margin-top: 1rem;">
                                     <p style="margin-bottom: 0rem;">Already have an account? <a href="login.php">Sign in now</a></p>
                                     <button type="submit" name='submit' class="btn btn-primary">Sign up</button>

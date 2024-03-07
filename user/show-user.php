@@ -4,7 +4,7 @@ session_start();
 @include './check_user.php';
 @include '../logout.php';
 
-  $select = "SELECT * FROM user";
+  $select = "SELECT * FROM user WHERE type = 'user'";
   $result = mysqli_query($conn, $select);
   $users = mysqli_fetch_all($result, MYSQLI_ASSOC);
 ?>
