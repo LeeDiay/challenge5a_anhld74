@@ -4,17 +4,14 @@
     include './check_admin.php';
     include '../logout.php';
 
-    // Lấy username từ session
     $username = $_SESSION['username'];
 
-    // Truy vấn để lấy ID của người dùng hiện tại từ username
     $query = "SELECT id FROM user WHERE username = '$username'";
     $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_assoc($result);
     $currentUserId = $row['id'];
 
-    // Truy vấn để lấy tin nhắn được gửi đến người dùng hiện tại
-    $messagesQuery = "SELECT * FROM messages WHERE receiver_id = $currentUserId";
+    $messagesQuery = "SELECT * FROM messages WHERE receiver_id = $currentUserId AND sender_id != $currentUserId";
     $messagesResult = mysqli_query($conn, $messagesQuery);
 ?>
 
@@ -41,7 +38,6 @@
                                 $message = $row['message'];
                                 $sentAt = $row['sent_at'];
 
-                                // Lấy thông tin về người gửi
                                 $senderQuery = "SELECT username FROM user WHERE id = $senderId";
                                 $senderResult = mysqli_query($conn, $senderQuery);
                                 $senderRow = mysqli_fetch_assoc($senderResult);

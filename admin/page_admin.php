@@ -11,7 +11,7 @@
     $row = mysqli_fetch_assoc($result);
     $currentUserId = $row['id'];
 
-    $countQuery = "SELECT COUNT(*) AS new_messages_count FROM messages WHERE receiver_id = $currentUserId";
+    $countQuery = "SELECT COUNT(*) AS new_messages_count FROM messages WHERE receiver_id = $currentUserId AND sender_id != $currentUserId";
     $countResult = mysqli_query($conn, $countQuery);
     $countRow = mysqli_fetch_assoc($countResult);
     $newMessagesCount = $countRow['new_messages_count'];
