@@ -22,10 +22,10 @@
         <div class="container">
             <div>
                 <div class="d-flex col-md justify-content-center">
-                    <div class="card bg-dark text-light" style="width: 18rem;">
+                    <div class="card bg-dark text-light" style="width: 30rem;">
                         <div class="card-body text-center">
                             <div class="mb-3">
-                                <img src="../source/img/two-frogs.png" alt="">
+                                <img src="../source/img/frog.png" alt="">
                             </div>
                             <h4 class="card-title mb-3">
                                 Welcome back, <?php echo $_SESSION['username']; ?> !!
