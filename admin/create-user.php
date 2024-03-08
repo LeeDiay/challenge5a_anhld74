@@ -112,8 +112,7 @@
                                     <option value="user">User</option>
                                     <option value="admin">Admin</option>
                                 </select>
-                                <div class="d-flex justify-content-between align-items-center" style="margin-top: 1rem;">
-                                    <p style="margin-bottom: 0rem;">Already have an account? <a href="login.php">Sign in now</a></p>
+                                <div class="d-flex justify-content-between align-items-center float-end" style="margin-top: 1rem;">
                                     <button type="submit" name='submit' class="btn btn-primary">Sign up</button>
                                 </div>
                             </form>
